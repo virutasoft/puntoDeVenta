@@ -1,0 +1,7 @@
+Options All -Indexes 
+# oculta todas las carpetas del proyecto, evita que el usuario pueda entrar a la estructura del proyecto a través de la url
+RewriteEngine On 
+
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?ruta=$1
+
+
