@@ -19,7 +19,7 @@ class ControladorUsuarios{
                 
 
                 //validacion de usuario y contraseña ↓↓
-               if($respuesta['usuario'] == $_POST['ingUsuario'] && $respuesta['password'] == $encriptar){
+            if($respuesta['usuario'] == $_POST['ingUsuario'] && $respuesta['password'] == $encriptar){
 
                 if ($respuesta['estado'] == 1) {
                     # code...
@@ -30,9 +30,29 @@ class ControladorUsuarios{
                     $_SESSION["perfil"] = $respuesta["perfil"];
                     $_SESSION["foto"] = $respuesta["foto"];
     
-    
-          
-                    echo '<script> window.location = "inicio";</script>'; 
+                    /**************************************
+                     * REGISTRAR FECHA ULTIMO LOGIN
+                    * ************************* ************/   
+                    date_default_timezone_get("America/Bogota");
+
+                    $fecha = date("Y-m-d");
+                    $hora = date("H:i:s");
+
+                    $fechaActual = $fecha. " ". $hora;
+
+                    $item1 = "ultimo_login";
+                    $valor1 = $fechaActual;
+
+                    $item2 = "id";
+                    $valor2 = $respuesta["id"];
+
+                    $ultimo_login = ModeloUsuarios::mdlActualizarUsuario( $tabla, $item1, $valor1, $item2, $valor2);
+
+                    if ($ultimo_login == "ok") {
+                        echo '<script> window.location = "inicio";</script>'; 
+                        
+                    } 
+                    
                 } else {
                     echo "<div class='alert alert-danger disabled' style='margin-top:20px;  border:1px solid orange; text-align:center;'>El usuario aún no se encuentra activo en el sistema, comunícate con el Administrador para recibir activación.</div>";
                 }
