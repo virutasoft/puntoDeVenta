@@ -118,3 +118,28 @@ $(document).on("click", ".btnActivar", function () {
 });
 
 // ----*********************ACTIVAR USUARIO ↑↑↑
+
+
+// ----*********************REVISAR USUARIO REPETIDO ↓↓↓
+
+$("#nuevoUsuario").change(function () {
+    var usuario = $(this).val();
+    var datos = new FormData();
+    //adicionamos la variable post "validarUsuario"
+    datos.append("validarUsuario", usuario);
+    $.ajax({
+        url: "ajax/usuarios.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            console.log("respuesta", respuesta);
+        }
+    })
+
+});
+
+// ----*********************REVISAR USUARIO REPETIDO ↑↑↑

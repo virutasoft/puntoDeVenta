@@ -134,7 +134,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key"></i></span>
-							<input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingrese el nuevo Usuario" autocomplete="off" required>
+							<input type="text" class="form-control input-lg" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingrese el nuevo Usuario" autocomplete="off" required>
 						</div>
 					</div>
 						<!-- ENTRADA PARA USUARIO -->
