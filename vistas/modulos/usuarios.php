@@ -79,8 +79,8 @@
                               echo '<td>'.$value["ultimo_login"].'</td>
                               <td>
                                 <div class="btn-group">
-                                <button class="btn btn-warning btn-xs btnEditarUsuario" idUsuario = "'.$value["id"].'" data-toggle = "modal" data-target = "#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                                <button class="btn btn-warning btnEditarUsuario" idUsuario = "'.$value["id"].'" data-toggle = "modal" data-target = "#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
             
                                 </div>
                               </td>
@@ -134,7 +134,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key"></i></span>
-							<input type="text" class="form-control input-lg"name="nuevoUsuario" placeholder="Ingrese el nuevo Usuario" autocomplete="off" required>
+							<input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingrese el nuevo Usuario" autocomplete="off" required>
 						</div>
 					</div>
 						<!-- ENTRADA PARA USUARIO -->

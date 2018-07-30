@@ -1,4 +1,4 @@
-// *********************SUBIENDO LA FOTO DEL USUARIO ↓↓↓
+//--- *********************SUBIENDO LA FOTO DEL USUARIO ↓↓↓
 $(".nuevaFoto").change(function () {
 
     var imagen = this.files[0];
@@ -35,14 +35,14 @@ $(".nuevaFoto").change(function () {
     }
 
 });
-// *********************SUBIENDO LA FOTO DEL USUARIO ↑↑↑
+//---*********************SUBIENDO LA FOTO DEL USUARIO ↑↑↑
 
 
-// *********************EDITAR USUARIO ↓↓↓
+// ----*********************EDITAR USUARIO ↓↓↓
 
-$(".btnEditarUsuario").click(function () {
+$(document).on("click", ".btnEditarUsuario", function () {
     var idUsuario = $(this).attr("idUsuario");
-    console.log("idUsuario", idUsuario);
+    //console.log("idUsuario", idUsuario);
 
     var datos = new FormData();
     datos.append("idUsuario", idUsuario);
@@ -78,10 +78,10 @@ $(".btnEditarUsuario").click(function () {
 
 });
 
-// *********************EDITAR USUARIO ↑↑↑
+// ----*********************EDITAR USUARIO ↑↑↑
 
-// *********************ACTIVAR USUARIO ↓↓↓
-$(".btnActivar").click(function () {
+// ----*********************ACTIVAR USUARIO ↓↓↓
+$(document).on("click", ".btnActivar", function () {
     var idUsuario = $(this).attr("idUsuario");
     var estadoUsuario = $(this).attr("estadoUsuario");
 
@@ -117,4 +117,4 @@ $(".btnActivar").click(function () {
 
 });
 
-// *********************ACTIVAR USUARIO ↑↑↑
+// ----*********************ACTIVAR USUARIO ↑↑↑

@@ -33,12 +33,12 @@ class ControladorUsuarios{
                     /**************************************
                      * REGISTRAR FECHA ULTIMO LOGIN
                     * ************************* ************/   
-                    date_default_timezone_get("America/Bogota");
+                    date_default_timezone_set("America/Bogota");
 
                     $fecha = date("Y-m-d");
                     $hora = date("H:i:s");
 
-                    $fechaActual = $fecha. " ". $hora;
+                    $fechaActual = $fecha." ". $hora;
 
                     $item1 = "ultimo_login";
                     $valor1 = $fechaActual;
@@ -46,9 +46,9 @@ class ControladorUsuarios{
                     $item2 = "id";
                     $valor2 = $respuesta["id"];
 
-                    $ultimo_login = ModeloUsuarios::mdlActualizarUsuario( $tabla, $item1, $valor1, $item2, $valor2);
+                    $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario( $tabla, $item1, $valor1, $item2, $valor2);
 
-                    if ($ultimo_login == "ok") {
+                    if ($ultimoLogin == "ok") {
                         echo '<script> window.location = "inicio";</script>'; 
                         
                     } 
@@ -60,9 +60,9 @@ class ControladorUsuarios{
                    /* echo "<div class='alert alert-success' style='margin-top:20px;  border:1px solid green; text-align:center;'>¡¡Bienvenido al sistema!!</div>";*/
 
 
-               }else{
-                   echo "<div class='alert alert-danger disabled' style='margin-top:20px;  border:1px solid orange; text-align:center;'>Error al ingresar tu Usuario o contraseña, vuelve a intentarlo.</div>";
-               }
+            }else{
+                echo "<div class='alert alert-danger disabled' style='margin-top:20px;  border:1px solid orange; text-align:center;'>Error al ingresar tu Usuario o contraseña, vuelve a intentarlo.</div>";
+            }
             }
 
         }//ingUsuario
