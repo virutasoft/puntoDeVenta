@@ -411,7 +411,45 @@ class ControladorUsuarios{
 
     }//cierre metodo ctrEditarUsuario()
     
+/*----------------------------------------*/ 
+# BORRAR  USUARIO
+/*----------------------------------------*/
+    static public function ctrBorrarUsuario(){
+        if (isset($_GET["idUsuario"])) {
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
+            if ($_GET["fotoUsuario"] != "") {
+                unlink($_GET["fotoUsuario"]);
+                //var_dump($_GET["usuario"]);
+                rmdir("vistas/img/usuarios/". $_GET["usuario"]);
+            }
 
+            $respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+
+            if ($respuesta == "ok") {
+                # code...
+                echo '<script>
+                                
+                                    swal({
+                                        type: "success",
+                                        title: "Usuario eliminado",
+                                        text: "El usuario se eliminó correctamente",
+                                        showConfirmButton: true,
+                                        confirmButtonText: "Cerrar",
+                                        closeOnConfirm: false
+            
+                                        }).then((result)=>{
+                                            if(result.value){
+                                                window.location = "usuarios";
+                                            }
+                                        });
+                                        
+                        
+                        
+                                </script>';
+            }
+        }
+    }// cierre metodo borrarUsuario()
 
 
 }//clase ControladorUsuarios

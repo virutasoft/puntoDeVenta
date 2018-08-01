@@ -123,6 +123,9 @@ $(document).on("click", ".btnActivar", function () {
 // ----*********************REVISAR USUARIO REPETIDO ↓↓↓
 
 $("#nuevoUsuario").change(function () {
+
+    $(".alert").remove();
+
     var usuario = $(this).val();
     var datos = new FormData();
     //adicionamos la variable post "validarUsuario"
@@ -136,10 +139,44 @@ $("#nuevoUsuario").change(function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            console.log("respuesta", respuesta);
+            //console.log("respuesta", respuesta);
+            if (respuesta) {
+                $("#nuevoUsuario").parent().after("<div class ='alert alert-warning'>Lo sentimos, el usuario ya existe. Ingresa un nombre de usuario diferente.</div>");
+                $("#nuevoUsuario").val("");
+            } else {
+
+            }
         }
     })
 
 });
 
 // ----*********************REVISAR USUARIO REPETIDO ↑↑↑
+
+//-----********************* ELIMINAR USUARIO ↓↓↓
+$(document).on("click", ".btnEliminarUsuario", function () {
+
+    var idUsuario = $(this).attr("idUsuario");
+    var fotoUsuario = $(this).attr("fotoUsuario");
+    var usuario = $(this).attr("usuario");
+
+
+    swal({
+        title: "¿Estás seguro de borrar el usuario?",
+        text: "Si no lo estás, puedes cancelar la acción.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, borrar usuario!"
+    }).then(function (result) {
+        if (result.value) {
+            window.location = "index.php?ruta=usuarios&idUsuario=" + idUsuario + "&usuario=" + usuario + "&fotoUsuario=" + fotoUsuario;
+        }
+    })
+
+
+
+})
+//-----********************* ELIMINAR USUARIO ↑↑↑
