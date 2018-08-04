@@ -98,7 +98,17 @@ $(document).on("click", ".btnActivar", function () {
         contentType: false,
         processData: false,
         success: function ($respuesta) {
-
+            if (window.matchMedia("(max-width:767px)").matches) {
+                swal({
+                    title: "¡El usuario ha sido modificado correctamente!",
+                    type: "success",
+                    confirmButtonText: "Cerrar"
+                }).then(function (result) {
+                    if (result.value) {
+                        window.location = "usuarios";
+                    }
+                });
+            }
         }
 
     });
