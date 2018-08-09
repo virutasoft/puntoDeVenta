@@ -35,11 +35,6 @@
                 </tr>
               </thead>
               <tbody>
-
-              <?php
-                
-              ?>
-
                 <tr>
                   <td>1</td>
                   <td>EQUIPOS ELECTROMECÁNICOS</td> 
@@ -90,7 +85,7 @@
   <!-- /.content-wrapper -->
 
 
-  <!-- MODAL AGREGAR CATEGORÍA -->
+  <!-- MODAL AGREGAR USUARIO -->
 
     <!-- Modal -->
 <div id="modalAgregarCategoria" class="modal fade" role="dialog">
@@ -124,11 +119,7 @@
 				<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cerrar</button>
 
 				<button type="submit" class="btn btn-success">Guardar Categoría</button>
-        <?php
-          //creamos el objeto para q capture el método del controlador
-          $crearCategoria = new ControladorCategorias();
-          $crearCategoria -> ctrCrearCategoria();
-        ?>
+
 			</div>
 		</form>
     </div>
