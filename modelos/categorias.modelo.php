@@ -20,5 +20,30 @@ class ModeloCategorias{
     }// cierre mdlIngresarCategoria
     // CREAR CATEGORIA  ↑↑↑
 
+    //MOSTRAR CATEGORIA ↓↓↓
 
+    static public function mdlMostrarCategorias($tabla, $item, $valor){
+
+        if ($item != null) {
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            $stmt -> bindParam(":".$item,$valor, PDO::PARAM_STR);
+
+            $stmt -> execute();
+            return $stmt -> fetch();
+
+        } else {
+
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $stmt -> execute();
+            return $stmt->fetchAll();//devolvemos todos los items de la tabla
+
+            
+        }
+        $stmt -> close();
+        $stmt = null;
+
+
+    }// cierre mdlMostrarCategorias
+
+    //MOSTRAR CATEGORIA ↑↑↑
 }//cierre modeloCategorias

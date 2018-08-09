@@ -37,44 +37,32 @@
               <tbody>
 
               <?php
-                
+                //llamado para listar categorias
+
+                # solicitamos una respuesta a la BD
+                // para hacer re-utilizable el metodo, se suelen colocar parametros
+                $item = null;
+                $valor = null;
+
+                $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                //var_dump($categorias);
+
+                foreach ($categorias as $key => $value) {
+                  echo '<tr>
+                  <td>'.($key+1).'</td>
+                  <td class="text-uppercase">'.$value["categoria"].'</td> 
+                  <td>
+                    <div class="btn-group">
+                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+
+                    </div>
+                  </td>
+                </tr>';
+                }
               ?>
 
-                <tr>
-                  <td>1</td>
-                  <td>EQUIPOS ELECTROMECÁNICOS</td> 
-                  <td>
-                    <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>1</td>
-                  <td>EQUIPOS ELECTROMECÁNICOS</td> 
-                  <td>
-                    <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>1</td>
-                  <td>EQUIPOS ELECTROMECÁNICOS</td> 
-                  <td>
-                    <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-
-                    </div>
-                  </td>
-                </tr>
                 
               </tbody>
             </table>
