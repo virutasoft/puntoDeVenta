@@ -54,7 +54,7 @@
                   <td class="text-uppercase">'.$value["categoria"].'</td> 
                   <td>
                     <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-warning btn-xs btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>
                     <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
 
                     </div>
@@ -124,4 +124,53 @@
   </div>
 </div>
 
-  <!-- MODAL AGREGAR USUARIO -->
+  <!-- MODAL AGREGAR CATEGORIA -->
+
+  <!-- MODAL EDITAR CATEGORÍA -->
+
+    <!-- Modal -->
+    <div id="modalEditarCategoria" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+		<form role="form" method="post">
+			<div class="modal-header" style="background: #f39c12; color: white">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Editar Categoría</h4>
+			</div>
+
+			<div class="modal-body">
+				<div class="box-body">
+
+						<!-- ENTRADA PARA CATEGORIA -->
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-th"></i></span>
+							<input type="text" class="form-control input-lg" name="editarCategoria" id="editarCategoria"required>
+							<input type="hidden" class="form-control input-lg" name="idCategoria" id="idCategoria" required>
+						</div>
+					</div>
+						<!-- ENTRADA PARA CATEGORIA -->
+
+				
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+
+				<button type="submit" class="btn btn-success">Guardar Cambios en Categoría</button>
+        <?php
+          //creamos el objeto para q capture el método del controlador
+          $editarCategoria = new ControladorCategorias();
+          $editarCategoria -> ctrEditarCategoria();
+        ?>
+			</div>
+		</form>
+    </div>
+
+  </div>
+</div>
+
+  <!-- MODAL EDITAR CATEGORIA -->
