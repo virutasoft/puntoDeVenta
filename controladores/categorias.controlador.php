@@ -99,7 +99,7 @@ class ControladorCategorias{
                                 showConfirmButton: true,
                                 confirmButtonText: 'Cerrar',
                                 closeOnConfirm: false   
-                            }).then(function(result)->{
+                            }).then(function(result){
                                 if(result.value){
                                     window.location = 'categorias';
                                 }
@@ -111,6 +111,37 @@ class ControladorCategorias{
     } // cierre editararCategoria
     // EDITAR CATEGORIAS ↑↑↑
 
+//BORRAR CATEGORIA ↓↓↓
+static public function ctrBorrarCategoria(){
+    if (isset($_GET["idCategoria"])) {
+        # code...
+        $tabla = "categorias";
+        $datos = $_GET["idCategoria"];
 
+        $respuesta = ModeloCategorias::mdlBorrarCategoria($datos, $tabla);
+
+        if ($respuesta == "ok") {
+            # code...
+            echo"<script> 
+                        swal({
+                                type: 'success',
+                                title: 'Confirmación de borrado',
+                                text: 'La categoría se eliminó correctamente.',
+                                showConfirmButton: true,
+                                confirmButtonText: 'Cerrar',
+                                closeOnConfirm: false   
+                            }).then(function(result){
+                                if(result.value){
+                                    window.location = 'categorias';
+                                }
+                            })
+                    </script>";
+
+        }
+        
+
+    }// fin condicional
+}// fin metodo ctrborrarCategoria
+//BORRAR CATEGORIA ↑↑↑
 
 } //cierre clase ControladorCategorias

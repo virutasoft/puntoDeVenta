@@ -1,0 +1,2 @@
+testear los errores de creacion de categorias y de borrado de categorias en el swal (->)
+verificar que al ingresar mas de 10 items, no se pierda la tabla y se muestre la paginacion

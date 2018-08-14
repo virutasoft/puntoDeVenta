@@ -64,4 +64,23 @@ class ModeloCategorias{
     }// cierre mdlIngresarCategoria
     // EDITAR CATEGORIA  ↑↑↑
 
+
+    //BORRAR CATEGORÍA ↓↓↓
+    static public function mdlBorrarCategoria($datos, $tabla){
+        
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id =:id");
+        $stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+        if ($stmt -> execute()) {
+            # code...
+            return "ok";
+
+        } else {
+            return "error";
+        }
+
+        $stmt -> close();
+        $stmt = null;
+    }//fin mdlBorrarCategoria
+    //BORRAR CATEGORÍA ↑↑↑
 }//cierre modeloCategorias

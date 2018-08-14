@@ -55,7 +55,7 @@
                   <td>
                     <div class="btn-group">
                     <button class="btn btn-warning btn-xs btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+                    <button class="btn btn-danger btn-xs btnEliminarCategoria" idCategoria="'.$value["id"].'"><i class="fa fa-times "></i></button>
 
                     </div>
                   </td>
@@ -172,5 +172,10 @@
 
   </div>
 </div>
+        <?php
+          //creamos el objeto para q capture el método del controlador
+          $borrarCategoria = new ControladorCategorias();
+          $borrarCategoria -> ctrBorrarCategoria();
+        ?>
 
   <!-- MODAL EDITAR CATEGORIA -->
