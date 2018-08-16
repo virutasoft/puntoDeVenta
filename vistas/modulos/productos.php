@@ -173,20 +173,40 @@
 						<!-- ENTRADA PARA STOCK -->
 
             <!-- ENTRADA PARA EL PRECIO DE COMPRA -->
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-							<input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min= "0" placeholder="Ingrese el precio de compra" required>
-						</div>
-					</div>
-						<!-- ENTRADA PARA EL PRECIO DE COMPRA -->
+					<div class="form-group row">
+            <div class= "col-xs-6">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min= "0" placeholder="Precio de compra" required>
+              </div>
+            </div>
+              <!-- ENTRADA PARA EL PRECIO DE COMPRA -->
 
-            <!-- ENTRADA PARA EL PRECIO DE VENTA -->
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-money"></i></span>
-							<input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min= "0" placeholder="Ingrese el precio de venta" required>
-						</div>
+              <!-- ENTRADA PARA EL PRECIO DE VENTA -->
+            
+            <div class= "col-xs-6">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min= "0" placeholder="Precio de venta" required>
+              </div>
+              <br>
+              <!-- CHECKBOX PARA PORCENTAJE -->
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" name="" id="" class="minimal porcentaje" checked>
+                    Utilizar porcentaje
+                  </label>
+                </div>
+              </div>
+              <!-- ENTRADA PARA PORCENTAJE -->
+              <div class="col-xs-6" style="padding:0">
+                <div class="input-group">
+                  <input type="number" name="" id="" min="0" value="40" class="form-control input-lg nuevoPorcentaje" required>
+                  <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                </div>
+              </div>
+            </div>
 					</div>
 						<!-- ENTRADA PARA EL PRECIO DE VENTA -->
 
