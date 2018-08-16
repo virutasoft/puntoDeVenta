@@ -32,7 +32,9 @@ session_start();
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.min.css">
-  
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
+
 <!-- CSS************************************* ↑↑↑-->
 
   <!-- Google Font -->
@@ -61,6 +63,9 @@ session_start();
 
     <!-- SWEETALERT -->
     <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
+
+    <!-- iCheck 1.0.1 -->
+    <script src="vistas/plugins/iCheck/icheck.min.js"></script>
 
 
     <!-- SWEETALERT ↑↑↑-->
