@@ -42,45 +42,62 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><img src="vistas/img/productos/default/anonymous.png" width="40px"  alt=""></td>
+                  <td>0001</td>
+                  <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+                  <td>Lorem Ipsum</td>
+                  <td>20</td>
+                  <td>5.00</td>
+                  <td>10.00</td>
+                  <td>2017-12-25 12:05:32</td>
+                  <td>
+                    <div class="btn-group">
+                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
 
-                <?php
+                    </div>
+                  </td>
+                </tr>
 
-                  $valor = null;
-                  $item = null;
+                <tr>
+                  <td>1</td>
+                  <td><img src="vistas/img/productos/default/anonymous.png" width="40px" alt=""></td>
+                  <td>0001</td>
+                  <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+                  <td>Lorem Ipsum</td>
+                  <td>20</td>
+                  <td>5.00</td>
+                  <td>10.00</td>
+                  <td>2017-12-25 12:05:32</td>
+                  <td>
+                    <div class="btn-group">
+                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
 
-                  $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+                    </div>
+                  </td>
+                </tr>
 
-                  //var_dump($productos);
+                <tr>
+                  <td>1</td>
+                  <td><img src="vistas/img/productos/default/anonymous.png" width="40px" alt=""></td>
+                  <td>0001</td>
+                  <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+                  <td>Lorem Ipsum</td>
+                  <td>20</td>
+                  <td>5.00</td>
+                  <td>10.00</td>
+                  <td>2017-12-25 12:05:32</td>
+                  <td>
+                    <div class="btn-group">
+                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
 
-                  foreach ($productos as $key => $value) {
-                    echo '<tr>
-                    <td>'.($key+1).'</td>
-                    <td><img src="vistas/img/productos/default/anonymous.png" width="40px"  alt=""></td>
-                    <td>'.$value["codigo"].'</td>
-                    <td>'.$value["descripcion"].'</td>';
-                    $item = "id";
-                    $valor = $value["id_categoria"];
-
-                    $categoria = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-
-
-                    echo '<td>'.$categoria["categoria"].'</td>
-                    <td>'.$value["stock"].'</td>
-                    <td>$ '.$value["precio_compra"].'</td>
-                    <td>$ '.$value["precio_venta"].'</td>
-                    <td>'.$value["fecha"].'</td>
-                    <td>
-                      <div class="btn-group">
-                      <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-  
-                      </div>
-                    </td>
-                  </tr>';
-                  }
-
-                ?>
- 
+                    </div>
+                  </td>
+                </tr>
 
               </tbody>
             </table>
@@ -99,7 +116,7 @@
   <!-- MODAL AGREGAR PRODUCTO -->
 
     <!-- Modal -->
-<div id="modalAgregarProducto" class="modal modal-primary fade" role="dialog">
+<div id="modalAgregarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -197,7 +214,7 @@
 					<div class="form-group text-center">
 						<div class="panel text-center" style="background: orange; color: white">SUBIR IMÀGEN DEL PRODUCTO /  HERRAMIENTA</div>
 						<input class="text-center" type="file" name="nuevaImagen" id="nuevaImagen">
-						<p class="help-block" style="color: white;">Peso máximo de la imàgen: 2Mb</p>
+						<p class="help-block">Peso máximo de la imàgen: 2Mb</p>
 						<img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail text-center" width="100px">
 					</div>
 						<!-- ENTRADA PARA SUBIR FOTO -->
