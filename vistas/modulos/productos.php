@@ -26,63 +26,24 @@
           
         </div>
         <div class="box-body">
-            <table class="table table-bordered table-striped  dt-responsive tablas">
+            <table class="table table-bordered table-striped  dt-responsive tablaDeProductos" width="100%">
               <thead>
+
                 <tr>
                   <th style="width:10px">No.</th>
-                  <th>Imágen</th>
+                  <th>Imagen</th>
                   <th>Código</th>
                   <th>Descripción</th>
                   <th>Categoría</th>
                   <th>Stock</th>
-                  <th>Precio de Compra</th>
-                  <th>Precio de Venta</th>
+                  <th>Precio de compra</th>
+                  <th>Precio de venta</th>
                   <th>Agregado el...</th>
                   <th>Acciones</th>
                 </tr>
+                
               </thead>
-              <tbody>
-
-                <?php
-
-                  $valor = null;
-                  $item = null;
-
-                  $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
-
-                  //var_dump($productos);
-
-                  foreach ($productos as $key => $value) {
-                    echo '<tr>
-                    <td>'.($key+1).'</td>
-                    <td><img src="vistas/img/productos/default/anonymous.png" width="40px"  alt=""></td>
-                    <td>'.$value["codigo"].'</td>
-                    <td>'.$value["descripcion"].'</td>';
-                    $item = "id";
-                    $valor = $value["id_categoria"];
-
-                    $categoria = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-
-
-                    echo '<td>'.$categoria["categoria"].'</td>
-                    <td>'.$value["stock"].'</td>
-                    <td>$ '.$value["precio_compra"].'</td>
-                    <td>$ '.$value["precio_venta"].'</td>
-                    <td>'.$value["fecha"].'</td>
-                    <td>
-                      <div class="btn-group">
-                      <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-  
-                      </div>
-                    </td>
-                  </tr>';
-                  }
-
-                ?>
- 
-
-              </tbody>
+              
             </table>
         </div>
         <!-- /.box-body -->
