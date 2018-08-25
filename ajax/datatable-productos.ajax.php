@@ -30,15 +30,21 @@ class TablaProductos{
                     
                 for ($i=0; $i < count($productos); $i++) {
                     $imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
+
+                    $item = "id";
+                    $valor = $productos[$i]["id_categoria"];
+
+                    $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+                    
                     $datosJson .= '[
                         "'.($i+1).'",
                         "'.$imagen.'",
                         "'.$productos[$i]["codigo"].'",
                         "'.$productos[$i]["descripcion"].'",
-                        "Taladros",
+                        "'.$categorias["categoria"].'",
                         "'.$productos[$i]["stock"].'",
-                        "$'.$productos[$i]["precio_compra"].'",
-                        "$'.$productos[$i]["precio_venta"].'",
+                        "$ '.$productos[$i]["precio_compra"].'",
+                        "$ '.$productos[$i]["precio_venta"].'",
                         "'.$productos[$i]["fecha"].'",
                         "'.$botones.'"
                     ],';
