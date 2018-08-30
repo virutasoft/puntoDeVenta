@@ -73,12 +73,34 @@
 
 			<div class="modal-body">
 				<div class="box-body">
+						<!-- ENTRADA PARA SELECCIONAR CATEGORÌA -->
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-th"></i></span>
+							<select name="nuevaCategoria" id="nuevaCategoria"  class="form-control text-uppercase input-lg" required>
+
+								<option value="">Seleccionar categorìa</option>
+                <?php
+                  $item = null;
+                  $valor = null;
+                  $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                  foreach ($categorias as $key => $value) {
+                    echo '<option class="text-uppercase" value="'.$value["id"].'">'.$value["categoria"].'</option>';
+                  }
+
+                ?>
+								
+							</select>
+						</div>
+					</div>
+						<!-- ENTRADA PARA SELECCIONAR CATEGORÌA -->
 
 						<!-- ENTRADA PARA CODIGO -->
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-list-ol"></i></span>
-							<input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingrese el còdigo del producto" required>
+							<input type="text" class="form-control input-lg" name="nuevoCodigo" id= "nuevoCodigo" placeholder="Còdigo del producto" readonly required>
 						</div>
 					</div>
 						<!-- ENTRADA PARA CODIGO -->
@@ -93,24 +115,11 @@
 						<!-- ENTRADA PARA DESCRIPCIÒN -->
 
 
-						<!-- ENTRADA PARA SELECCIONAR CATEGORÌA -->
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-th"></i></span>
-							<select name="nuevaCategoria"  class="form-control input-lg">
-								<option value="">Seleccionar categorìa</option>
-								<option value="taladros">Taladros</option>
-								<option value="andamios">Andamios</option>
-								<option value="equipos para construcciòn">Equipos para construcciòn</option>
-							</select>
-						</div>
-					</div>
-						<!-- ENTRADA PARA SELECCIONAR CATEGORÌA -->
 
             <!-- ENTRADA PARA STOCK -->
 					<div class="form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-check"></i></span>
+							<span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
 							<input type="number" class="form-control input-lg" name="nuevoStock" min= "0" placeholder="Ingrese el stock de producto que recibe" required>
 						</div>
 					</div>

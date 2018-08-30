@@ -2,13 +2,13 @@
 
 // VERIFICAR LA LLEGADA DE LOS DATOS json
 
-$.ajax({
+// $.ajax({
 
-    url: "ajax/datatable-productos.ajax.php",
-    success: function (respuesta) {
-        console.log(respuesta);
-    }
-});
+//     url: "ajax/datatable-productos.ajax.php",
+//     success: function (respuesta) {
+//         console.log(respuesta);
+//     }
+// });
 
 
 
@@ -47,3 +47,35 @@ $('.tablaDeProductos').DataTable({
     }
 
 });
+
+// CAPTURANDO LA CATEGORIA PARA ASIGNAR CODIGO ↓↓↓
+$("#nuevaCategoria").change(function () {
+
+    var idCategoria = $(this).val();
+    var datos = new FormData();
+    datos.append("idCategoria", idCategoria);
+
+    $.ajax({
+        url: "ajax/productos.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            if (!respuesta) {
+                var nuevoCodigo = idCategoria + "01";
+                $("#nuevoCodigo").val(nuevoCodigo);
+            } else {
+                //console.log("respuesta", respuesta);
+                var nuevoCodigo = Number(respuesta["codigo"]) + 1;
+                //ASIGNO VALOR DEL NUEVO CODIGO SUMADO AL VALOR DEL ELEMENTO CON EL ID NUEVOCODIGO
+                $("#nuevoCodigo").val(nuevoCodigo);
+
+            }
+        }
+    });
+
+});
+// CAPTURANDO LA CATEGORIA PARA ASIGNAR CODIGO ↑↑↑
