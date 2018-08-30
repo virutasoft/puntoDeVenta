@@ -130,7 +130,7 @@
             <div class= "col-xs-6">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min= "0" placeholder="Precio de compra" required>
+                <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" min= "0" placeholder="Precio de compra" required>
               </div>
             </div>
               <!-- ENTRADA PARA EL PRECIO DE COMPRA -->
@@ -139,8 +139,8 @@
             
             <div class= "col-xs-6">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min= "0" placeholder="Precio de venta" required>
+                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" min= "0" placeholder="Precio de venta" required>
               </div>
               <br>
               <!-- CHECKBOX PARA PORCENTAJE -->
