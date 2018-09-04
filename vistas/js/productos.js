@@ -110,9 +110,13 @@ $(".nuevoPorcentaje").change(function () {
 });
 
 $(".porcentaje").on("ifUnchecked", function () {
+    //INSERTAR AQUI DESPUES UNA VARIABLE PARA GUARDAR EL VALOR DE LA OPERACION QUE SE HIZO
+
     $("#nuevoPrecioVenta").prop("readonly", false);
+    //Y AQUI,BORRAR EL VALOR DEL CUADRO DE TEXTO
 })
 $(".porcentaje").on("ifchecked", function () {
+    //AQUI PARA RECUPERAR EL VALOR  DE LA OPERACION
     $("#nuevoPrecioVenta").prop("readonly", true);
 })
 

@@ -77,7 +77,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-th"></i></span>
-							<select name="nuevaCategoria" id="nuevaCategoria"  class="form-control text-uppercase input-lg" required>
+							<select  id="nuevaCategoria"  name="nuevaCategoria" class="form-control text-uppercase input-lg" required>
 
 								<option value="">Seleccionar categorìa</option>
                 <?php
@@ -127,20 +127,20 @@
 
             <!-- ENTRADA PARA EL PRECIO DE COMPRA -->
 					<div class="form-group row">
-            <div class= "col-xs-6">
+            <div class= "col-xs-12 col-sm-6">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" min= "0" placeholder="Precio de compra" required>
+                <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" step= "any" min= "0" placeholder="Precio de compra" required>
               </div>
             </div>
               <!-- ENTRADA PARA EL PRECIO DE COMPRA -->
 
               <!-- ENTRADA PARA EL PRECIO DE VENTA -->
             
-            <div class= "col-xs-6">
+            <div class= "col-xs-12 col-sm-6">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" min= "0" placeholder="Precio de venta" required>
+                <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" step= "any" min= "0" placeholder="Precio de venta" required>
               </div>
               <br>
               <!-- CHECKBOX PARA PORCENTAJE -->
@@ -155,7 +155,7 @@
               <!-- ENTRADA PARA PORCENTAJE -->
               <div class="col-xs-6" style="padding:0">
                 <div class="input-group">
-                  <input type="number" name="" id="" min="0" value="40" class="form-control input-lg nuevoPorcentaje" required>
+                  <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
                   <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                 </div>
               </div>
@@ -184,6 +184,12 @@
 
 			</div>
 		</form>
+
+                <?php
+                  $crearProducto = new ControladorProductos();
+                  $crearProducto -> ctrCrearProducto();
+                ?>
+
     </div>
 
   </div>
