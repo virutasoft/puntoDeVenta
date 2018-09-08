@@ -136,30 +136,37 @@ $(".nuevaImagen").change(function () {
         $(".nuevaImagen").val("");
 
         swal({
-            title: "Error al subir imágenes",
-            text: "Esta imágen debe venir en formato JPG o PNG",
+            title: "Error al subir la imagen",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
             type: "error",
-            confirmButtonText: "Cerrar"
+            confirmButtonText: "¡Cerrar!"
         });
 
     } else if (imagen["size"] > 2000000) {
+
         $(".nuevaImagen").val("");
 
         swal({
-            title: "Error al subir imágenes",
-            text: "Esta imágen debe tener un peso inferior o igual a 2 Mb." + "       " + "Suba una imágen más liviana.",
+            title: "Error al subir la imagen",
+            text: "¡La imagen no debe pesar más de 2MB!",
             type: "error",
-            confirmButtonText: "Cerrar"
+            confirmButtonText: "¡Cerrar!"
         });
+
     } else {
+
         var datosImagen = new FileReader;
         datosImagen.readAsDataURL(imagen);
+
         $(datosImagen).on("load", function (event) {
+
             var rutaImagen = event.target.result;
-            $(".previsualizar").attr("src", rutaImagen);
 
-        });
+            $(".previsualizarimg").attr("src", rutaImagen);
+
+        })
+
     }
+})
 
-});
 //---*********************SUBIENDO LA FOTO DEL PRODUCTO ↑↑↑

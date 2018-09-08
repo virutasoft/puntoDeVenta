@@ -31,6 +31,7 @@ $(".nuevaFoto").change(function () {
         $(datosImagen).on("load", function (event) {
             var rutaImagen = event.target.result;
             $(".previsualizar").attr("src", rutaImagen);
+            console.log(datosImagen)
         });
     }
 
