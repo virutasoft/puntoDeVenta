@@ -148,7 +148,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-th"></i></span>
 							<input type="text" class="form-control input-lg" name="editarCategoria" id="editarCategoria"required>
-							<input type="hidden" class="form-control input-lg" name="idCategoria" id="idCategoria" required>
+							<input type="hidden" class="form-control input-lg" name="idCategoria"  required>
 						</div>
 					</div>
 						<!-- ENTRADA PARA CATEGORIA -->

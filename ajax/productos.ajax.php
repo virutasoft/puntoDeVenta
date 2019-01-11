@@ -25,7 +25,24 @@ class AjaxProductos{
     
     // GENERAR CODIGO A  PARTIR DE IDCATEGORIA ↑↑↑
     
-    
+    //---------------------------------------
+
+
+// EDITAR PRODUCTO ↓↓↓
+    public $idProducto;
+
+    public function ajaxEditarProducto(){
+        $item = "id";
+        $valor = $this->idProducto;
+
+        $respuesta = controladorProductos::ctrMostrarProductos($item, $valor);
+
+        echo json_encode($respuesta);
+
+    }// fin method ajaxEditarProducto
+
+
+// EDITAR PRODUCTO ↑↑↑
     
     
 }// FIN CLASE AJAXPRODUCTOS
@@ -40,3 +57,12 @@ if (isset($_POST["idCategoria"])) {
     $codigoProducto -> ajaxCrearCodigoProducto();
 }
 // GENERAR CODIGO A  PARTIR DE IDCATEGORIA ↑↑↑
+
+// EDITAR PRODUCTO ↓↓↓
+if (isset($_POST["idProducto"])) {
+    $editarProducto = new AjaxProductos();
+    $editarProducto -> idProducto = $_POST["idProducto"];
+    $editarProducto -> ajaxEditarProducto();
+}
+// EDITAR PRODUCTO ↑↑↑
+
