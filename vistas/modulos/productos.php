@@ -271,7 +271,7 @@
             <div class= "col-xs-12 col-sm-6">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step= "any" min= "0" required>
+                <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step= "any" min= "0" readonly required>
               </div>
               <br>
               <!-- CHECKBOX PARA PORCENTAJE -->
@@ -299,7 +299,7 @@
 						<div class="panel text-center" style="background: orange; color: white">SUBIR IMÀGEN DEL PRODUCTO /  HERRAMIENTA</div>
 						<input class="nuevaImagen text-center" type="file" name="editarImagen">
 						<p class="help-block" style="color: white;">Peso máximo de la imàgen: 2Mb</p>
-						<img class="img-thumbnail previsualizarimg" src="vistas/img/productos/default/anonymous.png"  width="100px">
+						<img class="img-thumbnail previsualizarImg" src="vistas/img/productos/default/anonymous.png"  width="100px">
             <input type="hidden" name="imagenActual" id="imagenActual">
 					</div>
 						<!-- ENTRADA PARA SUBIR FOTO -->
@@ -317,10 +317,10 @@
 			</div>
 		</form>
 
-                <!-- <?php
-                  // $editarProducto = new ControladorProductos();
-                  // $editarProducto -> ctrEditarProducto();
-                ?> -->
+                <?php
+                  $editarProducto = new ControladorProductos();
+                  $editarProducto -> ctrEditarProducto();
+                ?> 
 
     </div>
 
