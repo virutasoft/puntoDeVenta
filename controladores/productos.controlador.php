@@ -137,6 +137,63 @@ class ControladorProductos{
     }// fin ctrCrearProducto
     // CREAR PRODUCTO ↑↑↑
     
+    //EDITAR PRODUCTO ↓↓↓
+    static public function ctrEditarProducto(){
+        if (isset($_POST["editarDescripcion"])) {
+            # code...
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/',$_POST["editarDescripcion"]) && 
+            preg_match('/^[0-9]+$/', $_POST["editarStock"]) &&
+            preg_match('/^[0-9.]+$/', $_POST["editarPrecioCompra"]) &&
+            preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])) {
+                # code...
+                $ruta = $_POST["imagenActual"];
+
+                if (isset($_FILES["editarImagen"]["tmp_name"])) {
+                    # code...
+                    list($ancho, $alto) = getimagesize($_FILES["editarImagen"]["tmp_name"]);
+
+                    $nuevoAncho = 500;
+                    $nuevoAlto = 500;
+
+                    /*=============================================
+                        CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL PRODUCTO
+                    =============================================*/
+
+                    $directorio = "vistas/img/productos/".$_POST["editarCodigo"];
+
+                    /*=============================================
+                        PRIMERO PREGUNTAMOS SI EXISTE UNA IMAGEN EN LA BD
+                    =============================================*/
+
+                    if (!empty($_POST["imagenActual"]) && $_POST["imagenActual"] != "vistas/img/productos/default/anonymous.png") {
+                        # code...
+                        unlink($_POST["imagenActual"]);
+                    }else{
+                        mkdir($directorio, 0755);
+                    }//fin if empty image
+
+                    /*=============================================
+                        DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+                    =============================================*/
+
+                    if ($_FILES["editarImagen"]["type"] == "image/jpeg") {
+                        # code...
+                            /*=============================================
+                            GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                            =============================================*/
+                            $aleatorio = mt_rand(100,999);
+                            $ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".jpg";
+                            $origen = imagecreatefromjpeg($_FILES["editarImagen"]["tmp_name"]);
+                            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                            imagecopyresized($destino, $origen, 0,0,0,0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                            imagejpeg($destino, $ruta);
+                    }// fin if editar imagen
     
+
+                }
+            }//fin if preg_match
+        }// fin if
+    }#fin ctrEditarProducto
+    //EDITAR PRODUCTO ↑↑↑
 
 }//FIN CLASS CONTROLADORPRODUCTOS
