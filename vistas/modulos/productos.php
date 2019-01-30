@@ -296,9 +296,9 @@
 
 						<!-- ENTRADA PARA SUBIR FOTO -->
 					<div class="form-group text-center">
-						<div class="panel text-center" style="background: orange; color: white">SUBIR IMÀGEN DEL PRODUCTO /  HERRAMIENTA</div>
+						<div class="panel text-center" style="background: orange; color: white">SUBIR IMAGEN DEL PRODUCTO /  HERRAMIENTA</div>
 						<input class="nuevaImagen text-center" type="file" name="editarImagen">
-						<p class="help-block" style="color: white;">Peso máximo de la imàgen: 2Mb</p>
+						<p class="help-block" style="color: white;">Peso máximo de la imagen: 2Mb</p>
 						<img class="img-thumbnail previsualizarImg" src="vistas/img/productos/default/anonymous.png"  width="100px">
             <input type="hidden" name="imagenActual" id="imagenActual">
 					</div>

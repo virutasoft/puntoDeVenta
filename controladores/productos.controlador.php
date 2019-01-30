@@ -147,8 +147,9 @@ class ControladorProductos{
             preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])) {
                 # code...
                 $ruta = $_POST["imagenActual"];
-
-                if (isset($_FILES["editarImagen"]["tmp_name"])) {
+                //var_dump($_POST["imagenActual"]);
+                
+                if (isset($_FILES["editarImagen"]["tmp_name"]) && !empty($_FILES["editarImagen"]["tmp_name"])) {
                     # code...
                     list($ancho, $alto) = getimagesize($_FILES["editarImagen"]["tmp_name"]);
 
@@ -185,13 +186,68 @@ class ControladorProductos{
                             $ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".jpg";
                             $origen = imagecreatefromjpeg($_FILES["editarImagen"]["tmp_name"]);
                             $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-                            imagecopyresized($destino, $origen, 0,0,0,0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                             imagejpeg($destino, $ruta);
                     }// fin if editar imagen
     
+                    if ($_FILES["editarImagen"]["type"] == "image/png") {
+                        # code...
+                        /*=============================================
+                            GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                        =============================================*/
+                        $aleatorio = mt_rand(100,999);
+                        $ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".png";
+                        $origen = imagecreatefrompng($_FILES["editarImagen"]["tmp_name"]);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                        imagepng($destino, $ruta);
+                    }//fin if editar imagen png
+                }//fin if para validar si viene imagen 
 
+                $tabla = "productos";
+                $datos = array('id_categoria' => $_POST["editarCategoria"],
+                                'codigo' => $_POST["editarCodigo"],
+                                'descripcion' => $_POST["editarDescripcion"],
+                                'stock' => $_POST["editarStock"],
+                                'precio_compra' => $_POST["editarPrecioCompra"],
+                                'precio_venta' => $_POST["editarPrecioVenta"],
+                                'imagen' => $ruta );
+
+                //respuesta de la base de datos
+                $respuesta = ModeloProductos::mdlEditarProducto($tabla, $datos);
+                //var_dump("respuesta: ".$respuesta);
+                
+                if ($respuesta == "ok") {
+                    # code...
+                    echo "<script>
+                    swal({
+                        type: 'success',
+                        title: 'Confirmación de modificación de producto',
+                        text: 'El producto ha sido modificado correctamente',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar'
+                    }).then(function(result){
+                        if(result.value){
+                            window.location = 'productos';
+                        }
+                    })
+                    </script>";
                 }
-            }//fin if preg_match
+            }/*fin if preg_match*/else{
+                echo "<script>
+                    swal({
+                        type: 'error',
+                        title: 'Error al modificar el producto',
+                        text: 'El producto no puede ir vacío o llevar caracteres especiales',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar'
+                    }).then(function(result){
+                        if(result.value){
+                            window.location = 'productos';
+                        }
+                    })
+                </script>";
+            }
         }// fin if
     }#fin ctrEditarProducto
     //EDITAR PRODUCTO ↑↑↑
