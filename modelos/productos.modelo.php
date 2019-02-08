@@ -72,4 +72,25 @@ class ModeloProductos{
     }// fin mdlEditarProducto
     // EDITAR PRODUCTOS ↑↑↑
 
+
+
+    //ELIMINAR PRODUCTOS ↓↓↓
+    static public function mdlEliminarProducto($tabla, $datos){
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id =:id");
+
+        $stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+
+        if ($stmt-> execute()) {
+            # code...
+            return "ok";
+        } else {
+            # code...
+            return "error";
+        }
+
+        $stmt -> close();
+        $stmt = null;
+        
+    }// fin mdlEliminarProducto
+    //ELIMINAR PRODUCTOS ↑↑↑
 }//FIN CLASS MODELOPRODUCTOS

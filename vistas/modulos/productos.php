@@ -328,3 +328,10 @@
 </div>
 
   <!-- MODAL EDITAR PRODUCTO ↑↑↑ -->
+
+
+  <?php 
+    $eliminarProducto = new ControladorProductos();
+    $eliminarProducto -> ctrEliminarProducto();
+  
+  ?>

@@ -42,7 +42,7 @@ $(".tablaDeProductos").DataTable({
 });
 
 // CAPTURANDO LA CATEGORIA PARA ASIGNAR CODIGO ↓↓↓
-$("#nuevaCategoria").change(function() {
+$("#nuevaCategoria").change(function () {
   var idCategoria = $(this).val();
   var datos = new FormData();
   datos.append("idCategoria", idCategoria);
@@ -55,7 +55,7 @@ $("#nuevaCategoria").change(function() {
     contentType: false,
     processData: false,
     dataType: "json",
-    success: function(respuesta) {
+    success: function (respuesta) {
       if (!respuesta) {
         var nuevoCodigo = idCategoria + "01";
         $("#nuevoCodigo").val(nuevoCodigo);
@@ -71,7 +71,7 @@ $("#nuevaCategoria").change(function() {
 // CAPTURANDO LA CATEGORIA PARA ASIGNAR CODIGO ↑↑↑
 
 // AGREGANDO PRECIO DE VENTA ↓↓↓
-$("#nuevoPrecioCompra,#editarPrecioCompra").change(function() {
+$("#nuevoPrecioCompra,#editarPrecioCompra").change(function () {
   if ($(".porcentaje").prop("checked")) {
     var valorPorcentaje = $(".nuevoPorcentaje").val();
     //console.log("ValorPorcentaje", valorPorcentaje);
@@ -93,7 +93,7 @@ $("#nuevoPrecioCompra,#editarPrecioCompra").change(function() {
 // AGREGANDO PRECIO DE VENTA ↑↑↑
 
 // CAMBIO DE PORCENTAJE ↓↓↓
-$(".nuevoPorcentaje").change(function() {
+$(".nuevoPorcentaje").change(function () {
   if ($(".porcentaje").prop("checked")) {
     var valorPorcentaje = $(this).val();
     //console.log("ValorPorcentaje", valorPorcentaje);
@@ -114,7 +114,7 @@ $(".nuevoPorcentaje").change(function() {
   }
 });
 
-$(".porcentaje").on("ifUnchecked", function() {
+$(".porcentaje").on("ifUnchecked", function () {
   //INSERTAR AQUI DESPUES UNA VARIABLE PARA GUARDAR EL VALOR DE LA OPERACION QUE SE HIZO
 
   $("#nuevoPrecioVenta").prop("readonly", false);
@@ -122,7 +122,7 @@ $(".porcentaje").on("ifUnchecked", function() {
   $("#editarPrecioVenta").prop("readonly", false);
 });
 
-$(".porcentaje").on("ifChecked", function() {
+$(".porcentaje").on("ifChecked", function () {
   //AQUI PARA RECUPERAR EL VALOR  DE LA OPERACION
   $("#nuevoPrecioVenta").prop("readonly", true);
   $("#editarPrecioVenta").prop("readonly", true);
@@ -131,9 +131,9 @@ $(".porcentaje").on("ifChecked", function() {
 // CAMBIO DE PORCENTAJE ↑↑↑
 
 //--- *********************SUBIENDO LA FOTO DEL PRODUCTO ↓↓↓
-$(".nuevaImagen").change(function() {
+$(".nuevaImagen").change(function () {
   var imagen = this.files[0];
-  console.log("imagen", imagen);
+  //console.log("imagen", imagen);
 
   // VALIDANDO EL FORMATO DE LA IMAGEN JPG O PNG
   if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
@@ -158,7 +158,7 @@ $(".nuevaImagen").change(function() {
     var datosImagen = new FileReader();
     datosImagen.readAsDataURL(imagen);
 
-    $(datosImagen).on("load", function(event) {
+    $(datosImagen).on("load", function (event) {
       var rutaImagen = event.target.result;
 
       $(".previsualizarimg").attr("src", rutaImagen);
@@ -169,57 +169,82 @@ $(".nuevaImagen").change(function() {
 //---*********************SUBIENDO LA FOTO DEL PRODUCTO ↑↑↑
 
 // EDITAR PRODUCTO ↓↓↓
-$(".tablaDeProductos tbody").on(
-  "click",
-  "button.btnEditarProducto",
-  function() {
-    var idProducto = $(this).attr("idProducto");
-    //console.log("idProducto", idProducto); //llevo el idProducto a ajax para que me traiga toda la información de la bd en esa fila
-    var datos = new FormData();
-    datos.append("idProducto", idProducto); //a la variable datos le edicionamos con append el idProducto para que haga la consulta en la BD
+$(".tablaDeProductos tbody").on("click", "button.btnEditarProducto", function () {
+  var idProducto = $(this).attr("idProducto");
+  //console.log("idProducto", idProducto); //llevo el idProducto a ajax para que me traiga toda la información de la bd en esa fila
+  var datos = new FormData();
+  datos.append("idProducto", idProducto); //a la variable datos le edicionamos con append el idProducto para que haga la consulta en la BD
 
-    //ajax ↓↓↓
-    $.ajax({
-      url: "ajax/productos.ajax.php",
-      method: "POST",
-      data: datos,
-      cache: false,
-      contentType: false,
-      processData: false,
-      dataType: "json",
-      success: function(respuesta) {
-        //console.log("Respuesta", respuesta);
-        var datosCategoria = new FormData();
-        datosCategoria.append("idCategoria", respuesta["id_categoria"]);
-        $.ajax({
-          url: "ajax/categorias.ajax.php",
-          method: "POST",
-          data: datosCategoria,
-          cache: false,
-          contentType: false,
-          processData: false,
-          dataType: "json",
-          success: function(respuesta) {
-            //console.log("imagen", respuesta);
-            $("#editarCategoria").val(respuesta["id"]);
-            $("#editarCategoria").html(respuesta["categoria"]);
-          }
-        });
-
-        $("#editarCodigo").val(respuesta["codigo"]);
-        $("#editarDescripcion").val(respuesta["descripcion"]);
-        $("#editarStock").val(respuesta["stock"]);
-        $("#editarPrecioCompra").val(respuesta["precio_compra"]);
-        $("#editarPrecioVenta").val(respuesta["precio_venta"]);
-
-        if (respuesta["imagen"] != "") {
-          $("#imagenActual").val(respuesta["imagen"]);
-          $(".previsualizarImg").attr("src", respuesta["imagen"]);
+  //ajax ↓↓↓
+  $.ajax({
+    url: "ajax/productos.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (respuesta) {
+      //console.log("Respuesta", respuesta);
+      var datosCategoria = new FormData();
+      datosCategoria.append("idCategoria", respuesta["id_categoria"]);
+      $.ajax({
+        url: "ajax/categorias.ajax.php",
+        method: "POST",
+        data: datosCategoria,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+          //console.log("imagen", respuesta);
+          $("#editarCategoria").val(respuesta["id"]);
+          $("#editarCategoria").html(respuesta["categoria"]);
         }
-        // console.log("imagen", respuesta["imagen"]);
+      });
+
+      $("#editarCodigo").val(respuesta["codigo"]);
+      $("#editarDescripcion").val(respuesta["descripcion"]);
+      $("#editarStock").val(respuesta["stock"]);
+      $("#editarPrecioCompra").val(respuesta["precio_compra"]);
+      $("#editarPrecioVenta").val(respuesta["precio_venta"]);
+
+      if (respuesta["imagen"] != "") {
+        $("#imagenActual").val(respuesta["imagen"]);
+        $(".previsualizarImg").attr("src", respuesta["imagen"]);
       }
-    });
-    //ajax ↑↑↑
-  }
-);
+      // console.log("imagen", respuesta["imagen"]);
+    }
+  });
+  //ajax ↑↑↑
+});
 // EDITAR PRODUCTO ↑↑↑
+
+//BORRAR PRODUCTO ↓↓↓
+$(".tablaDeProductos tbody").on("click", "button.btnEliminarProducto", function () {
+  var idProducto = $(this).attr("idProducto");
+  var codigo = $(this).attr("codigo");
+  var imagen = $(this).attr("imagen");
+  //console.log('id', idProducto);
+  //console.log('codigo', codigo);
+  //console.log('imagen', imagen);
+
+  swal({
+    title: 'Eliminación de productos',
+    text: '¿Está seguro de eliminar este producto? Si no lo está, puede cancelar.',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'Cancelar',
+    confirmButtonText: '¡Si, borrar producto!'
+  }).then(function (result) {
+    if (result.value) {
+      window.location = "index.php?ruta=productos&idProducto=" + idProducto + "&imagen=" + imagen + "&codigo=" + codigo;
+    }
+
+  });
+
+
+});
+//BORRAR PRODUCTO ↑↑↑
