@@ -201,6 +201,15 @@
 
 			</div>
 		</form>
+
+    <!-- ACCION PARA CREAR UN CLIENTE -->
+    <?php
+      $crearCliente = new ControladorClientes();
+      $crearCliente -> ctrCrearCliente();
+
+    ?>
+    <!-- ACCION PARA CREAR UN CLIENTE -->
+
     </div>
 
   </div>
