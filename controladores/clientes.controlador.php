@@ -16,17 +16,17 @@ class ControladorClientes{
                 # code...
                 $tabla = 'clientes';
 
-                $datos = array('nuevoCliente' => $_POST["nuevoCliente"],
-                                'nuevoDocumentoId' => $_POST["nuevoDocumentoId"],
-                                'nuevoEmail' => $_POST["nuevoEmail"],
-                                'nuevoTelefono' => $_POST["nuevoTelefono"],
-                                'nuevaDireccion' => $_POST["nuevaDireccion"],
-                                'nuevaFechaNacimiento' => $_POST["nuevaFechaNacimiento"]
+                $datos = array('nombre' => $_POST["nuevoCliente"],
+                                'documento' => $_POST["nuevoDocumentoId"],
+                                'email' => $_POST["nuevoEmail"],
+                                'telefono' => $_POST["nuevoTelefono"],
+                                'direccion' => $_POST["nuevaDireccion"],
+                                'fecha_nacimiento' => $_POST["nuevaFechaNacimiento"]
                             );
 
                             //respuesta de la base de datos
-                            $respuesta = ModeloClientes::mdlAgregarCliente($tabla, $datos);
-
+                            $respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
+                            //var_dump($datos);
                             if ($respuesta == 'ok') {
                                 # code...
                                 echo "<script>
