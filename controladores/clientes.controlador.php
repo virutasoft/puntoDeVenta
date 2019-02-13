@@ -1,7 +1,7 @@
 <?php
 
 //--------------------------------
-#CLASE CREAR CLIENTE ↓↓↓
+#CLASE  CLIENTE ↓↓↓
 //--------------------------------
 class ControladorClientes{
     //CREAR CLIENTES
@@ -66,7 +66,21 @@ class ControladorClientes{
             
         }
     }//fin ctrCrearCliente  
+
+//----------------------------
+#MOSTRAR CLIENTES ↓↓
+//----------------------------
+static public function ctrMostrarClientes($item, $valor){
+    $tabla = 'clientes';
+    $respuesta = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
+
+    return $respuesta;
+}//fin ctrMostrarClientes
+//----------------------------
+#MOSTRAR CLIENTES ↑↑
+//----------------------------
+
 }//fin class controladorClientes
 //--------------------------------
-#CLASE CREAR CLIENTE ↑↑↑
+#CLASE  CLIENTE ↑↑↑
 //--------------------------------

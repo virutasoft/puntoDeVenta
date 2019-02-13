@@ -43,67 +43,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>JUAN VILLEGAS</td> 
-                  <td>81611230</td> 
-                  <td>juan@gmail.com</td> 
-                  <td>3186428293</td> 
-                  <td>CR 2 E 22 04</td> 
-                  <td>1982-15-11</td> 
-                  <td>35</td> 
-                  <td>2017-12-11 12:05:32</td> 
-                  <td>2016-12-11 10:09:54</td> 
-                  <td>
-                    <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+              <!-- MOSTRAR CLIENTES ↓↓ -->
+                <?php
+                  $item = null;
+                  $valor = null;
 
-                    </div>
-                  </td>
-                </tr>
+                $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
+                //var_dump($clientes);
+                foreach ($clientes as $key => $value) {
+                  # code...
+                  echo '<tr>
+                          <td>'.($key+1).'</td>
+                          <td>'.$value["nombre"].'</td> 
+                          <td>'.$value["documento"].'</td> 
+                          <td>'.$value["email"].'</td> 
+                          <td>'.$value["telefono"].'</td> 
+                          <td>'.$value["direccion"].'</td> 
+                          <td>'.$value["fecha_nacimiento"].'</td> 
+                          <td>'.$value["compras"].'</td> 
+                          <td>0000-00-00 00:00:00</td> 
+                          <td>'.$value["fecha"].'</td> 
+                          <td>
+                            <div class="btn-group">
+                            <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
 
-                <tr>
-                <tr>
-                  <td>2</td>
-                  <td>MELANIA MOTTA</td> 
-                  <td>81611230</td> 
-                  <td>melania@gmail.com</td> 
-                  <td>3186428293</td> 
-                  <td>CR 2 E 22 04</td> 
-                  <td>1982-15-11</td> 
-                  <td>35</td> 
-                  <td>2017-12-11 12:05:32</td> 
-                  <td>2016-12-11 10:09:54</td> 
-                  <td>
-                    <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                <tr>
-                  <td>3</td>
-                  <td>ROQUE TIQUE</td> 
-                  <td>81611230</td> 
-                  <td>roque@gmail.com</td> 
-                  <td>3186428293</td> 
-                  <td>CR 2 E 22 04</td> 
-                  <td>1982-15-11</td> 
-                  <td>35</td> 
-                  <td>2017-12-11 12:05:32</td> 
-                  <td>2016-12-11 10:09:54</td> 
-                  <td>
-                    <div class="btn-group">
-                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
-
-                    </div>
-                  </td>
-                </tr>
+                            </div>
+                          </td>
+                        </tr>';
+                }
+                ?>
+              <!-- MOSTRAR CLIENTES ↑↑ -->
+                
                 
               </tbody>
             </table>

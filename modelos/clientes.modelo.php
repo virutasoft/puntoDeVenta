@@ -27,5 +27,25 @@ class ModeloClientes{
         
     }//fin mdlAgregarCliente
     //INGRESAR CLIENTE ↑↑↑
+    //MOSTRAR CLIENTE ↓↓↓
+    static public function mdlMostrarClientes($tabla, $item, $valor){
+        if ($item != null) {
+            # code...
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =: $item");
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt -> execute();
+            return $stmt -> fetch();
+        } else {
+            # code...
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $stmt -> execute();
+            return $stmt -> fetchAll();
+        }
+        $stmt -> close();
+        $stmt = null;
+        
+    }//fin mdlMostrarClientes
+    //MOSTRAR CLIENTE ↑↑↑
+
 }//fin class modeloClientes
 //----------------MODELO AGREGAR CLIENTES ↑↑↑
