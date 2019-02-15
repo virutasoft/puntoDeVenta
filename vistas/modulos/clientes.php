@@ -26,7 +26,7 @@
           
         </div>
         <div class="box-body">
-            <table class="table table-hover table-bordered table-striped  dt-responsive">
+            <table class="table table-hover table-bordered table-striped  dt-responsive tblClientes">
               <thead>
                 <tr class="text-uppercase">
                   <th style="width:10px">No.</th>
@@ -72,6 +72,7 @@
                           </td>
                         </tr>';
                 }
+                //var_dump($value["nombre"]);
                 ?>
               <!-- MOSTRAR CLIENTES ↑↑ -->
                 
@@ -277,8 +278,8 @@
 
     <!-- ACCION PARA CREAR UN CLIENTE -->
     <?php
-      //$crearCliente = new ControladorClientes();
-      //$crearCliente -> ctrCrearCliente();
+      $editarCliente = new ControladorClientes();
+      $editarCliente -> ctrEditarCliente();
 
     ?>
     <!-- ACCION PARA CREAR UN CLIENTE -->

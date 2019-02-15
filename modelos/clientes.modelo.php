@@ -14,7 +14,7 @@ class ModeloClientes{
         $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
         $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
         $stmt->bindParam(":fecha_nacimiento", $datos["fecha_nacimiento"], PDO::PARAM_STR);
-        var_dump($stmt);
+        //var_dump($stmt);
         if ($stmt->execute()) {
             # code...
             return "ok";
