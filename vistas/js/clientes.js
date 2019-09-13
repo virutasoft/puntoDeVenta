@@ -1,24 +1,29 @@
 //EDITAR CLIENTE ↓↓
-$(".tblClientes").on("click", "button.btnEditarCliente", function () {
-    var idCliente = $(this).attr("idCliente");
-    var datos = new FormData();
-    datos.append("idCliente", idCliente);
-    //console.log(idCliente);
-    $.ajax({
+/*=============================================
+EDITAR CLIENTE
+=============================================*/
+$(".tablas").on("click", ".btnEditarCliente", function() {
 
-        url: "ajax/clientes.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (respuesta) {
+        var idCliente = $(this).attr("idCliente");
 
-            console.log(respuesta);
-        }
+        var datos = new FormData();
+        datos.append("idCliente", idCliente);
+
+        $.ajax({
+
+            url: "ajax/clientes.ajax.php",
+            method: "POST",
+            data: datos,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(respuesta) {
+
+                console.log(respuesta)
+            }
+
+        })
 
     })
-
-});
-//EDITAR CLIENTE ↑↑
+    //EDITAR CLIENTE ↑↑

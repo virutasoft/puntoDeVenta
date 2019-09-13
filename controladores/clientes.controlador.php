@@ -85,64 +85,70 @@ static public function ctrMostrarClientes($item, $valor){
 //-------------------------------
 static public function ctrEditarCliente(){
 
-    if (isset($_POST["editarCliente"])) {
-        # code...
-        if (preg_match('/^[a-zA-ZñÑáéíóú´´AÉÍÓÚ ]+$/', $_POST["editarCliente"]) &&
-            preg_match('/^[0-9]+$/',$_POST["editarDocumentoId"]) &&
-            preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$_POST["editarEmail"]) &&
-            preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) &&
-            preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])) {
-            # code...
-            $tabla = 'clientes';
+    if(isset($_POST["editarCliente"])){
 
-            $datos = array('nombre' => $_POST["editarCliente"],
-                            'documento' => $_POST["editarDocumentoId"],
-                            'email' => $_POST["editarEmail"],
-                            'telefono' => $_POST["editarTelefono"],
-                            'direccion' => $_POST["editarDireccion"],
-                            'fecha_nacimiento' => $_POST["editarFechaNacimiento"]
-                        );
+        if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarCliente"]) &&
+           preg_match('/^[0-9]+$/', $_POST["editarDocumentoId"]) &&
+           preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"]) && 
+           preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) && 
+           preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])){
 
-                        //respuesta de la base de datos
-                        $respuesta = ModeloClientes::mdlEditarCliente($tabla, $datos);
-                        //var_dump($datos);
-                        if ($respuesta == 'ok') {
-                            # code...
-                            echo "<script>
-                                swal({
-                                    type:'success',
-                                    title:'Edición de clientes',
-                                    text:'El cliente ha sido creado correctamente',
-                                    showConfirmButton: true,
-                                    confirmButtonText: 'Perfecto',
-                                    closeOnConfirm: false
-                                }).then(function(result){
-                                    if (result.value) {
-                                        window.location = 'clientes';
-                                    }
-                                })
-                            </script>";
-                        }
-                        
+               $tabla = "clientes";
 
-        } else {
-            # code...
-            echo "<script>
+               $datos = array("id"=>$_POST["idCliente"],
+                              "nombre"=>$_POST["editarCliente"],
+                           "documento"=>$_POST["editarDocumentoId"],
+                           "email"=>$_POST["editarEmail"],
+                           "telefono"=>$_POST["editarTelefono"],
+                           "direccion"=>$_POST["editarDireccion"],
+                           "fecha_nacimiento"=>$_POST["editarFechaNacimiento"]);
+
+               $respuesta = ModeloClientes::mdlEditarCliente($tabla, $datos);
+
+               if($respuesta == "ok"){
+
+                echo'<script>
+
                 swal({
-                    type: 'error',
-                    title: 'Edición de clientes',
-                    text:'El cliente no puede ir vacío o llear caracteres especiales',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Cerrar',
-                    closeOnConfirm: false
-                }).then(function(result){
-                    if (result.value) {
-                        window.location = 'clientes';
-                    }
-                })
-            </script>";
+                      type: "success",
+                      title: "El cliente ha sido cambiado correctamente",
+                      showConfirmButton: true,
+                      confirmButtonText: "Cerrar"
+                      }).then(function(result){
+                                if (result.value) {
+
+                                window.location = "clientes";
+
+                                }
+                            })
+
+                </script>';
+
+            }
+
+        }else{
+
+            echo'<script>
+
+                swal({
+                      type: "error",
+                      title: "¡El cliente no puede ir vacío o llevar caracteres especiales!",
+                      showConfirmButton: true,
+                      confirmButtonText: "Cerrar"
+                      }).then(function(result){
+                        if (result.value) {
+
+                        window.location = "clientes";
+
+                        }
+                    })
+
+              </script>';
+
+
+
         }
-        
+
     }
 
 } //fin ctrEditarCliente
