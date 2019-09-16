@@ -66,7 +66,7 @@
                           <td>
                             <div class="btn-group">
                             <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$value["id"].'" ><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnEliminarCliente" idCliente="'.$value["id"].'"><i class="fa fa-times"></i></button>
 
                             </div>
                           </td>
@@ -208,6 +208,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user"></i></span>
 										<input type="text" class="form-control input-lg" name="editarCliente" id="editarCliente"  required>
+										<input type="hidden" name="idCliente" id="idCliente">
 									</div>
 								</div>
 									<!-- ENTRADA PARA CLIENTES -->
@@ -278,3 +279,9 @@
 	</div>
 </div>
 <!-- MODAL EDITAR CLIENTE ↑↑↑ -->
+
+<?php
+      $eliminarCliente = new ControladorClientes();
+      $eliminarCliente -> ctrEliminarCliente();
+
+    ?>

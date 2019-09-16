@@ -52,7 +52,7 @@ class ModeloClientes{
 
    
 
-    // EDIATAR CLIENTE ↓↓↓
+    // EDITAR CLIENTE ↓↓↓
     static public function mdlEditarCliente($tabla, $datos){
 $stmt= Conexion::conectar()->prepare("UPDATE $tabla SET nombre =:nombre, documento =:documento, email =:email, telefono =:telefono, direccion =:direccion, fecha_nacimiento =:fecha_nacimiento WHERE id =:id");
 
@@ -79,5 +79,23 @@ $stmt=null;
 
     }
     // EDITAR CLIENTE ↑↑↑
+    //------------------------
+    // ELIMINAR CLIENTE ↓↓↓
+    static public function mdlEliminarCliente($tabla, $datos){
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id=:id");
+        $stmt->bindParam(":id",$datos, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            # code...
+            return "ok";
+        } else {
+            # code...
+            return "error";
+        }
+        $stmt->close();
+        $stmt= null;
+        
+    }// fin mdlEliminarCliente
+
+    // ELIMINAR CLIENTE ↑↑↑
 }//fin class modeloClientes
 //----------------MODELO AGREGAR CLIENTES ↑↑↑

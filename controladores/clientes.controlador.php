@@ -156,6 +156,39 @@ static public function ctrEditarCliente(){
 //-------------------------------
 #EDITAR CLIENTE ↑↑↑
 //-------------------------------
+//-------------------------------
+#ELIMINAR CLIENTE ↓↓↓
+//-------------------------------
+static public function ctrEliminarCliente(){
+    if (isset($_GET["idCliente"])) {
+        # code...
+        $tabla = "clientes";
+        $datos = $_GET["idCliente"];
+        $respuesta = ModeloClientes::mdlEliminarCliente($tabla, $datos);
+        if ($respuesta== "ok") {
+            # code...
+            echo '<script>
+                    swal({
+                        type: "success",
+                        title: "Confirmación de borrado de clientes",
+                        text: "El cliente ha sido borrado correctamente.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "clientes";
+                        }
+                    });
+
+            </script>';
+        }
+        
+    }
+} // fin ctrEliminarCliente
+//-------------------------------
+#ELIMINAR CLIENTE ↑↑↑
+//-------------------------------
 
 }//fin class controladorClientes
 //--------------------------------

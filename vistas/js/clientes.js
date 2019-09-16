@@ -1,8 +1,8 @@
-// ----*********************EDITAR USUARIO ↓↓↓
+// ----*********************EDITAR CLIENTE ↓↓↓
 
 $(".tablas").on("click", ".btnEditarCliente", function() {
     var idCliente = $(this).attr("idCliente");
-    console.log("idCliente", idCliente);
+    //console.log("idCliente", idCliente);
 
     var datos = new FormData();
     datos.append("idCliente", idCliente);
@@ -19,6 +19,7 @@ $(".tablas").on("click", ".btnEditarCliente", function() {
         success: function(respuesta) {
 
             // console.log(respuesta)
+            $("#idCliente").val(respuesta["id"]);
             $("#editarCliente").val(respuesta["nombre"]);
             $("#editarDocumentoId").val(respuesta["documento"]);
             $("#editarEmail").val(respuesta["email"]);
@@ -34,4 +35,27 @@ $(".tablas").on("click", ".btnEditarCliente", function() {
 
 });
 
-// ----*********************EDITAR USUARIO ↑↑↑
+// ----*********************EDITAR CLIENTE ↑↑↑
+
+// ----*********************ELIMINAR CLIENTE ↓↓↓
+$(".tablas").on("click", ".btnEliminarCliente", function() {
+    var idCliente = $(this).attr("idCliente");
+    //console.log("id del cliente: ", idCliente);
+
+    swal({
+        title: "¿Estás seguro de borrar el cliente?",
+        text: "Si no lo estás, puedes cancelar la acción.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, borrar cliente!"
+    }).then(function(result) {
+        if (result.value) {
+            window.location = "index.php?ruta=clientes&idCliente=" + idCliente;
+        }
+    })
+
+});
+// ----*********************ELIMINAR CLIENTE ↑↑↑
