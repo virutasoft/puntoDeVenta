@@ -224,7 +224,7 @@ class ControladorUsuarios{
 
         $tabla = "usuarios";
         $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
-
+        // var_dump($respuesta);
         return $respuesta;
 
     }//cierre metodo ctrMostrarUsuarios()

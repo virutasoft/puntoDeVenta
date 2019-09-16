@@ -13,10 +13,13 @@ class AjaxClientes{
     public function ajaxEditarCliente(){
         $item = "id";
         $valor = $this->idCliente;
-        
+        //var_dump($item, $valor);
         $respuesta = ControladorClientes::ctrMostrarClientes($item, $valor);
+        // var_dump($respuesta);
         
         echo json_encode($respuesta);
+        
+
         //var_dump($respuesta);
     }//fin function ajaxEditarCliente
 }// fin clase AjaxEditarClientes

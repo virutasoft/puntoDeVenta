@@ -13,7 +13,8 @@ class AjaxUsuarios{
         $item = "id";
         $valor = $this->idUsuario;
         $respuesta = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
-
+        // var_dump($respuesta);
+        // exit;
         echo json_encode($respuesta);
 
     } //fin metodo ajaxEditarUsuario
