@@ -29,7 +29,7 @@ class ModeloClientes{
     //INGRESAR CLIENTE ↑↑↑
     //MOSTRAR CLIENTE ↓↓↓
     static public function mdlMostrarClientes($tabla, $item, $valor){
-        if ($item != "") {
+        if ($item != null) {
             # code...
             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
