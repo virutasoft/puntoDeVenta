@@ -32,8 +32,7 @@
                     <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                        <input type="text" class="form-control text-uppercase" id="nuevoVendedor" name="nuevoVendedor" value="<?php echo $_SESSION["nombre"];?>" readonly>
-                        <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
+                        <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="Usuario Administrador" readonly>
                       </div>
                     </div>
                     <!-- ENTRADA PARA VENDEDOR -->
@@ -41,24 +40,7 @@
                     <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-list-ol"></i></span>
-                          <?php
-                          $item= null;
-                          $valor = null;
-                            $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-                            if (!$ventas) {
-                              # code...
-                              echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="000001" readonly>';
-                            } else {
-                              # code...
-                              foreach ($variable as $key => $value) {
-                                # code...
-                              }
-                              $codigo = $value["codigo"]+1;
-                              echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-                            }
-                            
-                          ?>
-                        
+                        <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="36789" readonly>
                       </div>
                     </div>
                     <!-- ENTRADA PARA CODIGO FACTURA -->
@@ -66,19 +48,8 @@
                     <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user-secret"></i></span>
-                        <select name="seleccionarCliente" id="seleccionarCliente" class="form-control text-uppercase" required>
-                          <option class="text-uppercase" value="">SELECCIONAR CLIENTE</option>
-                          <?php
-                            $item = null;
-                            $valor = null;
-
-                            $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
-
-                            foreach ($categorias as $key => $value) {
-                              # code...
-                              echo '<option class="text-uppercase" value="'.$value["id"].'">'.$value["nombre"].'</option>';
-                            }
-                          ?>
+                        <select name="seleccionarCliente" id="seleccionarCliente" class="form-control" required>
+                          <option value="">Seleccionar cliente</option>
                         </select>
                         <span class="input-group-addon"><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAgregarCliente">Agregar Cliente</button></span>
                       </div>
