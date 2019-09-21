@@ -190,7 +190,7 @@
           <div class="box box-danger">
             <div class="box-header with-border"></div>
             <div class="box-body">
-              <table class="table table-hover table-bordered table-striped  dt-responsive tablas">
+              <table class="table table-hover table-bordered table-striped  dt-responsive tablaVentas">
                 <thead>
                   <tr class="text-uppercase">
                     <th style="width:10px">No.</th>
@@ -201,20 +201,7 @@
                     <th>Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
-                <!-- MOSTRAR productos ↓↓ -->
-                <tr class="text-uppercase">
-                    <td>1</td>
-                    <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px" alt=""></td>
-                    <td>102</td>
-                    <td>Lorem ipsum dolor sit</td>
-                    <td>50</td>
-                    <td><button class="btn btn-info">Agregar Ítem</button></td>
-                  </tr>
-                <!-- MOSTRAR productos ↑↑ -->
-                  
-                  
-                </tbody>
+                
               </table>
             </div> <!-- cierro box body-->
           </div> <!-- cierro box danger-->    
