@@ -24,7 +24,7 @@
         <div class="col-lg-5 col-xs-12"> 
           <div class="box box-info">
             <div class="box-header with-border"></div>
-            <form role="form" method="post"> 
+            <form role="form" method="post" class="formularioVenta"> 
               <div class="box-body">
                 
                   <div class="box">
@@ -86,30 +86,10 @@
                     <!-- ENTRADA PARA CLIENTE-->
                     <!-- ENTRADA PARA AGREGAR PRODUCTO-->
                     <!-- Descripción del producto ↓↓-->
+
                     <div class="form-group row nuevoProducto">
-                      <div class="col-xs-6"  style="padding-right:0px">
-                        <div class="input-group">
-                          <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></span>
-                          <input type="text" name="agregarProducto" id="agregarProducto" placeholder="Descripción del producto" class="form-control" required>
-                        </div>
-                      </div>
-                      <!-- Descripción del producto ↑↑-->
-                      <!-- Cantidad del producto ↓↓ -->
-                      <div class="col-xs-3">
-                        <input type="number" name="nuevaCantidadProducto" id="nuevaCantidadProducto" class="form-control" min="1" placeholder="0" required>
-                      </div>
-                      <!-- Cantidad del producto ↑↑-- -->
-                      <!-- Precio del producto ↓↓ -->
-                      <div class="col-xs-3" style="padding-left:0px">
-                        <div class="input-group">
-                          <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                          <input type="number" name="nuevoPrecioProducto" id="nuevoPrecioProducto" class="form-control" min="1" placeholder="000.000.00" readinly required>
-                          
-                        </div>
-                        
-                      </div>
-                      <!-- Precio del producto ↑↑-- -->
-                    </div>
+
+                    </div> 
                     <!-- BOTON PARA AGREGAR PRODUCTO--  -->
                     <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button>
                     <hr>
