@@ -73,7 +73,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                     '<div class="row" style="padding:5px 15px">' +
                     '<div class="col-xs-6"  style="padding-right:0px">' +
                     '<div class="input-group">' +
-                    '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto"><i class="fa fa-times"></i></button></span>' +
+                    '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto recuperarBoton" idProducto="' + idProducto + '" ><i class="fa fa-times"></i></button></span>' +
                     '<input type="text" name="agregarProducto" id="agregarProducto" placeholder="' + descripcion + '" class="form-control" required readonly>' +
                     '</div>' +
                     '</div>' +
@@ -107,6 +107,12 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
 
 // QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR EL BOTON ↓↓↓
 $(".formularioVenta").on("click", "button.quitarProducto", function() {
-    $(this).parent().parent().parent().parent().remove()
+    $(this).parent().parent().parent().parent().remove();
+
+    var idProducto = $(this).attr("idProducto");
+    //console.log(idProducto);
+    $("button.recuperarBoton[idProducto='" + idProducto + "']").removeClass("btn-default");
+    $("button.recuperarBoton[idProducto='" + idProducto + "']").addClass("btn-info agregarProducto");
+
 });
 // QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR EL BOTON ↑↑↑
