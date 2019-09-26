@@ -67,6 +67,19 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                 //console.log("respuesta", respuesta);
                 var descripcion = respuesta["descripcion"];
                 var stock = respuesta["stock"];
+                // EVITAR AGREGAR PRODUCTO CUANDO EL STOCK ESTÉ EN CERO ↓↓
+                if (stock == 0) {
+                    swal({
+                        title: "Error de producto",
+                        text: "No hay stock disponible para " + descripcion + ".",
+                        type: "error",
+                        confirmButtonText: "Entendido!"
+                    });
+                    $("button.recuperarBoton[idProducto='" + idProducto + "']").removeClass("btn-default");
+                    $("button.recuperarBoton[idProducto='" + idProducto + "']").addClass("btn-info agregarProducto");
+                    return;
+                }
+                // EVITAR AGREGAR PRODUCTO CUANDO EL STOCK ESTÉ EN CERO ↓↓
                 var precio = respuesta["precio_venta"];
 
                 $(".nuevoProducto").append(
