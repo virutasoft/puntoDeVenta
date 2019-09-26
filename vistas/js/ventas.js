@@ -121,6 +121,8 @@ $(".tablaVentas").on("draw.dt", function() {
     // QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR EL BOTON ↓↓↓
 var idQuitarProducto = [];
 
+localStorage.removeItem("quitarProducto");
+
 $(".formularioVenta").on("click", "button.quitarProducto", function() {
     $(this).parent().parent().parent().parent().remove();
 
