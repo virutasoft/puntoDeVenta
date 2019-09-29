@@ -87,7 +87,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                     '<div class="col-xs-6"  style="padding-right:0px">' +
                     '<div class="input-group">' +
                     '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto recuperarBoton" idProducto="' + idProducto + '" ><i class="fa fa-times"></i></button></span>' +
-                    '<input type="text" name="agregarProducto"  placeholder="' + descripcion + '" class="form-control agregarProducto" required readonly>' +
+                    '<input type="text" name="agregarProducto" id="agregarProducto" placeholder="' + descripcion + '" class="form-control" required readonly>' +
                     '</div>' +
                     '</div>' +
 
@@ -96,7 +96,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                     '<!-- Cantidad del producto ↓↓ -->' +
 
                     '<div class="col-xs-3">' +
-                    '<input type="number" name="nuevaCantidadProducto"  class="form-control nuevaCantidadProducto" min="1" value= "1" stock="' + stock + '" required>' +
+                    '<input type="number" name="nuevaCantidadProducto" id="nuevaCantidadProducto" class="form-control" min="1" value= "1" stock="' + stock + '" required>' +
                     ' </div>' +
 
                     ' <!-- Cantidad del producto ↑↑-- -->' +
@@ -105,7 +105,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                     '<div class="col-xs-3" style="padding-left:0px">' +
                     '<div class="input-group">' +
                     '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
-                    '<input type="number" name="nuevoPrecioProducto"  class="form-control nuevoPrecioProducto" min="1" value="' + precio + '" readonly required>' +
+                    '<input type="number" name="nuevoPrecioProducto" id="nuevoPrecioProducto" class="form-control" min="1" value="' + precio + '" readonly required>' +
                     '</div>' +
                     '</div>' +
                     '</div>'
@@ -158,97 +158,3 @@ $(".formularioVenta").on("click", "button.quitarProducto", function() {
 
 });
 // QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR EL BOTON ↑↑↑
-
-// AGREGANDO PRODUCTO DESDE EL BOTÓN PARA DISPOSITIVOS ↓↓↓
-$(".btnAgregarProducto").click(function() {
-        var datos = new FormData();
-        datos.append("traerProductos", "ok");
-        $.ajax({
-                url: "ajax/productos.ajax.php",
-                method: "POST",
-                data: datos,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: "json",
-                success: function(respuesta) {
-                    //console.log("Respuesta: ", respuesta);
-                    $(".nuevoProducto").append(
-                        '<div class="row" style="padding:5px 15px">' +
-                        '<div class="col-xs-6"  style="padding-right:0px">' +
-                        '<div class="input-group">' +
-                        '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto recuperarBoton" idProducto><i class="fa fa-times"></i></button></span>' +
-                        '<select class="form-control nuevaDescripcionProducto" idProducto name="nuevaDescripcionProducto" required>' +
-                        '<option>Seleccione un producto</option>' +
-                        '</select>' +
-                        '</div>' +
-                        '</div>' +
-
-                        '<!-- Descripción del producto ↑↑-->' +
-
-                        '<!-- Cantidad del producto ↓↓ -->' +
-
-                        '<div class="col-xs-3 ingresoCantidad">' +
-                        '<input type="number" name="nuevaCantidadProducto" class="form-control  nuevaCantidadProducto" min="1" value= "1" stock required>' +
-                        ' </div>' +
-
-                        ' <!-- Cantidad del producto ↑↑-- -->' +
-                        '<!-- Precio del producto ↓↓ -->' +
-
-                        '<div class="col-xs-3 ingresoPrecio" style="padding-left:0px">' +
-                        '<div class="input-group">' +
-                        '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
-                        '<input type="number" name="nuevoPrecioProducto"  class="form-control nuevoPrecioProducto" min="1" value= readonly required>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>'
-                    );
-                    // AGREGAR LOS PRODUCTOS AL SELECT ↓↓
-                    respuesta.forEach(funcionForEach);
-
-                    function funcionForEach(item, index) {
-                        $(".nuevaDescripcionProducto").append(
-                            '<option idProducto="' + item.id + '" value="' + item.descripcion + '">' + item.descripcion + '</option>'
-                        )
-                    }
-
-                    // AGREGAR LOS PRODUCTOS AL SELECT ↑↑
-                }
-            }) //→ ajax
-    })
-    // AGREGANDO PRODUCTO DESDE EL BOTÓN PARA DISPOSITIVOS ↑↑↑
-
-// SELECCIONAR PRODUCTO ↓↓↓
-$(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function() {
-    var nombreProducto = $(this).val();
-    //console.log(nombreProducto);
-    //return;
-    //precio producto
-    var nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
-    //cantidad producto
-    var nuevaCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
-
-    var datos = new FormData();
-    datos.append("nombreProducto", nombreProducto);
-    //solicitu ajax luego de capturar el id del producto ↓
-
-    $.ajax({
-        url: "ajax/productos.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(respuesta) {
-            //console.log(respuesta);
-            $(nuevaCantidadProducto).attr("stock", respuesta["stock"]);
-            $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
-        }
-
-
-    });
-    // → ajax
-});
-
-// SELECCIONAR PRODUCTO ↑↑↑

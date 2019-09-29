@@ -91,7 +91,7 @@
 
                     </div> 
                     <!-- BOTON PARA AGREGAR PRODUCTO--  -->
-                    <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar Producto</button>
+                    <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button>
                     <hr>
                     <!-- BOTON PARA AGREGAR PRODUCTO--  -->
                     <div class="row">
