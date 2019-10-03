@@ -30,21 +30,43 @@ class AjaxProductos{
 
 // EDITAR PRODUCTO ↓↓↓
     public $idProducto;
+    public $traerProductos;
+    public $nombreProducto;
 
     public function ajaxEditarProducto(){
-        $item = "id";
-        $valor = $this->idProducto;
 
-        $respuesta = controladorProductos::ctrMostrarProductos($item, $valor);
+        if ($this->traerProductos == "ok") {
+            # code...
+            $item = null;
+            $valor = null;
 
-        echo json_encode($respuesta);
+            $respuesta = controladorProductos::ctrMostrarProductos($item, $valor);
+
+            echo json_encode($respuesta);
+
+        } elseif($this->nombreProducto != "") {
+            # code...
+            $item = "descripcion";
+            $valor = $this->nombreProducto;
+
+            $respuesta = controladorProductos::ctrMostrarProductos($item, $valor);
+
+            echo json_encode($respuesta);
+        } else {
+            # code...
+            $item = "id";
+            $valor = $this->idProducto;
+
+            $respuesta = controladorProductos::ctrMostrarProductos($item, $valor);
+
+            echo json_encode($respuesta);
+        }
 
     }// fin method ajaxEditarProducto
 
 
 // EDITAR PRODUCTO ↑↑↑
-    
-    
+   
 }// FIN CLASE AJAXPRODUCTOS
 
 //-------------------------------------
@@ -66,3 +88,18 @@ if (isset($_POST["idProducto"])) {
 }
 // EDITAR PRODUCTO ↑↑↑
 
+// TRAER PRODUCTO ↓↓↓
+if (isset($_POST["traerProductos"])) {
+    $traerProductos = new AjaxProductos();
+    $traerProductos -> traerProductos = $_POST["traerProductos"];
+    $traerProductos -> ajaxEditarProducto();
+}
+// TRAER PRODUCTO ↑↑↑
+
+// TRAER PRODUCTO ↓↓↓
+if (isset($_POST["nombreProducto"])) {
+    $traerProductos = new AjaxProductos();
+    $traerProductos -> nombreProducto = $_POST["nombreProducto"];
+    $traerProductos -> ajaxEditarProducto();
+}
+// TRAER PRODUCTO ↑↑↑
