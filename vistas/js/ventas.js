@@ -161,8 +161,10 @@ $(".formularioVenta").on("click", "button.quitarProducto", function() {
 // QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR EL BOTON ↑↑↑
 
 // AGREGANDO PRODUCTO DESDE EL BOTON PARA DISPOSITIVOS ↓↓↓
+var numProducto = 0;
 $(".btnAgregarProducto").click(function() {
 
+    numProducto++;
 
     var datos = new FormData();
     datos.append("traerProductos", "ok");
@@ -181,7 +183,7 @@ $(".btnAgregarProducto").click(function() {
                 '<div class="col-xs-6"  style="padding-right:0px">' +
                 '<div class="input-group">' +
                 '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto recuperarBoton" idProducto><i class="fa fa-times"></i></button></span>' +
-                '<select class="form-control nuevaDescripcionProducto" idProducto name="nuevaDescripcionProducto" required>' +
+                '<select class="form-control nuevaDescripcionProducto" id="producto' + numProducto + '" idProducto name="nuevaDescripcionProducto" required>' +
                 '<option>Seleccione el producto</option>' +
                 '</select>' +
                 '</div>' +
@@ -210,9 +212,12 @@ $(".btnAgregarProducto").click(function() {
             respuesta.forEach(funcionForEach);
 
             function funcionForEach(item, index) {
-                $(".nuevaDescripcionProducto").append(
-                    '<option idProducto="' + item.id + '" value="' + item.descripcion + '">' + item.descripcion + '</option>'
-                )
+                if (item.stock != 0) {
+                    $("#producto" + numProducto).append(
+                        '<option idProducto="' + item.id + '" value="' + item.descripcion + '">' + item.descripcion + '</option>'
+                    )
+                }
+
             } // funcionForEach
             // AGREGAMOS PRODUCTOS AL SELECT ↑↑
         }
