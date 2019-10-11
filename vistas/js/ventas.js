@@ -110,11 +110,11 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                     '</div>' +
                     '</div>'
                 );
+                // FUNCION SUMAR TOTAL DE PRECIOS ↓
+                sumarTotalPrecios();
             }
         })
         // ajax ↑↑↑
-
-
 });
 // AGREGANDO PRODUCTOS A LA VENTA DESDE LA TABLA ↓↓↓
 
@@ -156,6 +156,13 @@ $(".formularioVenta").on("click", "button.quitarProducto", function() {
     //console.log(idProducto);
     $("button.recuperarBoton[idProducto='" + idProducto + "']").removeClass("btn-default");
     $("button.recuperarBoton[idProducto='" + idProducto + "']").addClass("btn-info agregarProducto");
+    if ($(".nuevoProducto").children().length == 0) {
+        $("#nuevoTotalVenta").val(0);
+    } else {
+        // FUNCION SUMAR TOTAL DE PRECIOS ↓
+        sumarTotalPrecios();
+    }
+
 
 });
 // QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR EL BOTON ↑↑↑
@@ -220,6 +227,8 @@ $(".btnAgregarProducto").click(function() {
 
             } // funcionForEach
             // AGREGAMOS PRODUCTOS AL SELECT ↑↑
+            // FUNCION SUMAR TOTAL DE PRECIOS ↓
+            sumarTotalPrecios();
         }
     });
     // ajax ↑↑
@@ -273,5 +282,23 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
         });
 
     }
+    // FUNCION SUMAR TOTAL DE PRECIOS ↓
+    sumarTotalPrecios();
 });
 // MODIFICAR LA CANTIDAD ↑↑↑
+
+// SUMAR TODOS LOS PRECIOS ↓↓↓
+function sumarTotalPrecios() {
+    var precioItem = $(".nuevoPrecioProducto");
+    var arraySumaPrecio = [];
+    for (let i = 0; i < precioItem.length; i++) {
+        arraySumaPrecio.push(Number($(precioItem[i]).val()));
+    }
+
+    function sumaArrayPrecios(total, numero) {
+        return total + numero;
+    } // fin sumarArrayPrecios ↑
+    var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
+    $("#nuevoTotalVenta").val(sumaTotalPrecio)
+} // fin sumarTotalPrecios ↑↑
+// SUMAR TODOS LOS PRECIOS ↑↑↑
