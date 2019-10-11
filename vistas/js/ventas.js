@@ -102,10 +102,10 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                     ' <!-- Cantidad del producto ↑↑-- -->' +
                     '<!-- Precio del producto ↓↓ -->' +
 
-                    '<div class="col-xs-3" style="padding-left:0px">' +
+                    '<div class="col-xs-3 ingresoPrecio" style="padding-left:0px">' +
                     '<div class="input-group">' +
                     '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
-                    '<input type="number" name="nuevoPrecioProducto" class="form-control nuevoPrecioProducto"  min="1" value="' + precio + '" readonly required>' +
+                    '<input type="number" name="nuevoPrecioProducto" precioReal="' + precio + '" class="form-control nuevoPrecioProducto"  min="1" value="' + precio + '" readonly required>' +
                     '</div>' +
                     '</div>' +
                     '</div>'
@@ -203,7 +203,7 @@ $(".btnAgregarProducto").click(function() {
                 '<div class="col-xs-3 ingresoPrecio" style="padding-left:0px">' +
                 '<div class="input-group">' +
                 '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
-                '<input type="number" name="nuevoPrecioProducto" class="form-control nuevoPrecioProducto"  min="1" value= readonly required>' +
+                '<input type="number" name="nuevoPrecioProducto" precioReal="" class="form-control nuevoPrecioProducto"  min="1"  readonly required>' +
                 '</div>' +
                 '</div>' +
                 '</div>'
@@ -247,7 +247,31 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function()
         success: function(respuesta) {
             $(nuevaCantidadProducto).attr("stock", respuesta["stock"]);
             $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
+            $(nuevoPrecioProducto).attr("precioReal", respuesta["precio_venta"]);
         }
     });
 });
 // SELECCIONAR PRODUCTO ↑↑↑
+
+// MODIFICAR LA CANTIDAD ↓↓↓
+$(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
+    var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+    var precioFinal = $(this).val() * precio.attr("precioReal");
+    precio.val(precioFinal)
+
+
+
+    //validar el stock al modificar la cantidad
+    if (Number($(this).val()) > Number($(this).attr("stock"))) {
+        $(this).val(1);
+        precio.val(precio.attr("precioReal")) //AGREGADO EXTRA PARA DEVOLVER EL VALOR DEL PRECIO A LA UNIDAD
+        swal({
+            title: "Error de producto",
+            text: "¡Solo hay " + $(this).attr("stock") + " unidades!",
+            type: "error",
+            confirmButtonText: "¡Correcto!"
+        });
+
+    }
+});
+// MODIFICAR LA CANTIDAD ↑↑↑
