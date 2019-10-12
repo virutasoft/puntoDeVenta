@@ -112,6 +112,8 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function() {
                 );
                 // FUNCION SUMAR TOTAL DE PRECIOS ↓
                 sumarTotalPrecios();
+                // FUNCION AGREGAR IMPUESTO ↓
+                agregarImpuesto()
             }
         })
         // ajax ↑↑↑
@@ -158,10 +160,15 @@ $(".formularioVenta").on("click", "button.quitarProducto", function() {
     $("button.recuperarBoton[idProducto='" + idProducto + "']").addClass("btn-info agregarProducto");
 
     if ($(".nuevoProducto").children().length == 0) {
+        $("#nuevoImpuestoVenta").val(0);
         $("#nuevoTotalVenta").val(0);
+        $("#nuevoTotalVenta").attr("total", 0);
+
     } else {
         // FUNCION SUMAR TOTAL DE PRECIOS ↓
         sumarTotalPrecios();
+        // FUNCION AGREGAR IMPUESTO ↓
+        agregarImpuesto()
     }
 
 
@@ -230,6 +237,8 @@ $(".btnAgregarProducto").click(function() {
             // AGREGAMOS PRODUCTOS AL SELECT ↑↑
             // FUNCION SUMAR TOTAL DE PRECIOS ↓
             sumarTotalPrecios();
+            // FUNCION AGREGAR IMPUESTO ↓
+            agregarImpuesto()
         }
     });
     // ajax ↑↑
@@ -279,7 +288,9 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
             // var precioFinal = $(this).val() * precio.attr("precioReal");
             // precio.val(precioFinal);
         sumarTotalPrecios();
-        // SI LA CANTIDAD ES SUPERIOR AL STOCK, REGRESAR LOS VALORES INICIALES ↑↑
+        // FUNCION AGREGAR IMPUESTO ↓
+        agregarImpuesto()
+            // SI LA CANTIDAD ES SUPERIOR AL STOCK, REGRESAR LOS VALORES INICIALES ↑↑
         swal({
             title: "Error de producto",
             text: "¡Solo hay " + $(this).attr("stock") + " unidades!",
@@ -290,6 +301,8 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
     }
     // FUNCION SUMAR TOTAL DE PRECIOS ↓
     sumarTotalPrecios();
+    // FUNCION AGREGAR IMPUESTO ↓
+    agregarImpuesto();
 });
 // MODIFICAR LA CANTIDAD ↑↑↑
 
@@ -307,7 +320,8 @@ function sumarTotalPrecios() {
     } // fin sumarArrayPrecios ↑
     var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
     //console.log(sumaTotalPrecio)
-    $("#nuevoTotalVenta").val(sumaTotalPrecio)
+    $("#nuevoTotalVenta").val(sumaTotalPrecio);
+    $("#nuevoTotalVenta").attr("total", sumaTotalPrecio);
 } // fin sumarTotalPrecios ↑↑
 // SUMAR TODOS LOS PRECIOS ↑↑↑
 
@@ -317,3 +331,22 @@ function sumarTotalPrecios() {
 //FALTA ARREGLAR LO DE AGREGAR CORRECTAMENTE LOS ITEMS EN DISPOSITIVOS MÓVILES
 
 ////////////////////////////////////////////
+
+// AGREGAR IMPUESTO A LA VENTA ↓↓↓
+// FUNCION AGREGAR IMPUESTO ↓↓
+function agregarImpuesto() {
+    var impuesto = $("#nuevoImpuestoVenta").val();
+    var precioTotal = $("#nuevoTotalVenta").attr("total");
+    var precioImpuesto = Number(precioTotal * impuesto / 100);
+    var totalConImpuesto = Number(precioImpuesto) + Number(precioTotal);
+    $("#nuevoTotalVenta").val(totalConImpuesto);
+    $("#nuevoPrecioImpuesto").val(precioImpuesto);
+    $("#nuevoPrecioNeto").val(precioTotal);
+} // FUNCION AGREGAR IMPUESTO ↑↑
+// AGREGAR IMPUESTO A LA VENTA ↑↑↑
+
+// CUANDO CAMBIE EL IMPUESTO ↓↓
+$("#nuevoImpuestoVenta").change(function() {
+        agregarImpuesto();
+    })
+    // CUANDO CAMBIE EL IMPUESTO ↑↑
