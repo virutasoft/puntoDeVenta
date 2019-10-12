@@ -156,6 +156,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function() {
     //console.log(idProducto);
     $("button.recuperarBoton[idProducto='" + idProducto + "']").removeClass("btn-default");
     $("button.recuperarBoton[idProducto='" + idProducto + "']").addClass("btn-info agregarProducto");
+
     if ($(".nuevoProducto").children().length == 0) {
         $("#nuevoTotalVenta").val(0);
     } else {
@@ -272,8 +273,13 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function() {
 
     //validar el stock al modificar la cantidad
     if (Number($(this).val()) > Number($(this).attr("stock"))) {
+        // SI LA CANTIDAD ES SUPERIOR AL STOCK, REGRESAR LOS VALORES INICIALES ↓↓
         $(this).val(1);
         precio.val(precio.attr("precioReal")) //AGREGADO EXTRA PARA DEVOLVER EL VALOR DEL PRECIO A LA UNIDAD
+            // var precioFinal = $(this).val() * precio.attr("precioReal");
+            // precio.val(precioFinal);
+        sumarTotalPrecios();
+        // SI LA CANTIDAD ES SUPERIOR AL STOCK, REGRESAR LOS VALORES INICIALES ↑↑
         swal({
             title: "Error de producto",
             text: "¡Solo hay " + $(this).attr("stock") + " unidades!",
@@ -294,11 +300,20 @@ function sumarTotalPrecios() {
     for (let i = 0; i < precioItem.length; i++) {
         arraySumaPrecio.push(Number($(precioItem[i]).val()));
     }
+    //console.log(arraySumaPrecio)
 
     function sumaArrayPrecios(total, numero) {
         return total + numero;
     } // fin sumarArrayPrecios ↑
     var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
+    //console.log(sumaTotalPrecio)
     $("#nuevoTotalVenta").val(sumaTotalPrecio)
 } // fin sumarTotalPrecios ↑↑
 // SUMAR TODOS LOS PRECIOS ↑↑↑
+
+
+////////////////////////////////////////////
+
+//FALTA ARREGLAR LO DE AGREGAR CORRECTAMENTE LOS ITEMS EN DISPOSITIVOS MÓVILES
+
+////////////////////////////////////////////
