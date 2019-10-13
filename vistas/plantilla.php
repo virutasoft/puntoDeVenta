@@ -75,6 +75,10 @@ session_start();
     <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
     <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- InputMask -->
+
+    <!-- JQueryNumber -->
+    <script src="vistas/plugins/jquerynumber/jquery.number.min.js"></script>
+    <!-- JQueryNumber -->
 </head>
 
  
