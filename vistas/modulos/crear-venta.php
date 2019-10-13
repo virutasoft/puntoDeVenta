@@ -116,7 +116,7 @@
                               <td style="width: 50%">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
-                                  <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                                  <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="0.00" readonly required>
                                   
                                 </div>
                               </td>
@@ -137,21 +137,20 @@
                             <select name="nuevoMetodoPago" id="nuevoMetodoPago" class="form-control" required>
                               <option value="">Seleccione método de pago</option>
                               <option value="Efectivo">Efectivo</option>
-                              <option value="tarjetaCredito">Tarjeta Crédito</option>
-                              <option value="tarjetaDebito">Tarjeta Débito</option>
-                              <option value="consignacion">Consignación</option>
-                              <option value="giro">Giro</option>
+                              <option value="TC">Tarjeta Crédito</option>
+                              <option value="TD">Tarjeta Débito</option>
+                              <!-- <option value="consignacion">Consignación</option>
+                              <option value="giro">Giro</option> -->
                             </select>
                           </div>
                         <!-- ENTRADA PARA METODO PAGO-->
                         
                         </div> <!-- cierro col-xs-6 -->
-                        <div class="col-xs-6" style="padding-left:0px">
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" placeholder="Código transacción" required>
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                          </div>
+                        <!-- cajas metodo pago ↓↓↓-->
+                        <div class="cajasMetodoPago">
+
                         </div>
+                        <!-- cajas metodo pago ↑↑↑-->
                     </div>
                     <br>
                     <!-- ENTRADA PARA METODO DE PAGO ↑↑-->
