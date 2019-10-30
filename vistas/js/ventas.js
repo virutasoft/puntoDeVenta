@@ -382,19 +382,22 @@ $("#nuevoMetodoPago").change(function() {
             '<div class="col-xs-4">' +
             '<div class="input-group">' +
             '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
-            '<input type="text" class="form-control nuevoValorEfectivo" placeholder="000.000.00" required>' +
+            '<input type="text" class="form-control" id="nuevoValorEfectivo" placeholder="000.000.00" required>' +
             '</div>' +
             '</div>' +
-            '<div class="col-xs-4 capturarCambioEfectivo" style="padding-left:0px">' +
+            '<div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">' +
             '<div class="input-group">' +
             '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
-            '<input type="text" class="form-control nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000.000.00" readonly required>' +
+            '<input type="text" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000.000.00" readonly required>' +
             '</div>' +
             '</div>'
         );
         // AGREGAR FORMATO AL PRECIO 
-        $(".nuevoCambioEfectivo").number(true, 2);
-        $(".nuevoValorEfectivo").number(true, 2);
+        $("#nuevoCambioEfectivo").number(true, 2);
+        $("#nuevoValorEfectivo").number(true, 2);
+
+        //LISTAR MÉTODO EN LA ENTRADA
+        listarMetodos();
     } else {
         $(this).parent().parent().removeClass("col-xs-4");
         $(this).parent().parent().addClass("col-xs-6");
@@ -411,17 +414,22 @@ $("#nuevoMetodoPago").change(function() {
 // SELECCIOAR METODO DE PAGO ↑↑
 
 // CAMBIO EN EFECTIVO ↓↓
-$(".formularioVenta").on("change", "input.nuevoValorEfectivo", function() {
+$(".formularioVenta").on("change", "input#nuevoValorEfectivo", function() {
     var efectivo = $(this).val();
     //console.log(efectivo)
     var cambio = Number(efectivo) - Number($("#nuevoTotalVenta").val());
     console.log(cambio)
-    var nuevoCambioEfectivo = $(this).parent().parent().parent().children(".capturarCambioEfectivo").children().children(".nuevoCambioEfectivo");
+    var nuevoCambioEfectivo = $(this).parent().parent().parent().children("#capturarCambioEfectivo").children().children("#nuevoCambioEfectivo");
     //console.log($(this).parent().parent().parent().children(".capturarCambioEfectivo").children().children(".nuevoCambioEfectivo"));
     nuevoCambioEfectivo.val(cambio);
 });
 // CAMBIO EN EFECTIVO ↑↑
 
+// CAMBIO TRANSACCION ↓↓
+$(".formularioVenta").on("change", "input#nuevoCodigoTransaccion", function() {
+    //LISTAR MÉTODO EN LA ENTRADA AL CAMBIAR EL CÓDIGO DE LA TRANSACCION
+    listarMetodos();
+}); // CAMBIO TRANSACCION ↑↑
 
 // LISTAR TODOS LOS PRODUCTOS ↓↓↓
 function listarProductos() {
@@ -447,3 +455,13 @@ function listarProductos() {
     $("#listaProductos").val(JSON.stringify(listaProductos));
     //ASIGNAMOS LA LISTA EN DATOS JSON AL INPUT OCULTO ↑
 } // LISTAR TODOS LOS PRODUCTOS ↑↑↑
+
+// LISTAR METODO PAGO ↓↓
+function listarMetodos() {
+    var listaMetodos = "";
+    if ($("#nuevoMetodoPago").val() == "Efectivo") {
+        $("#listaMetodoPago").val("Efectivo");
+    } else {
+        $("#listaMetodoPago").val($("#nuevoMetodoPago").val() + " - " + $("#nuevoCodigoTransaccion").val());
+    }
+} // LISTAR METODO PAGO ↑↑
