@@ -32,7 +32,7 @@
                     <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                        <input type="text" class="form-control text-uppercase" id="nuevoVendedor" name="nuevoVendedor" value="<?php echo $_SESSION["nombre"];?>" readonly>
+                        <input type="text" class="form-control text-uppercase" id="nuevoVendedor"  value="<?php echo $_SESSION["nombre"];?>" readonly>
                         <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
                       </div>
                     </div>
@@ -149,9 +149,8 @@
                         
                         </div> <!-- cierro col-xs-6 -->
                         <!-- cajas metodo pago ↓↓↓-->
-                        <div class="cajasMetodoPago">
-
-                        </div>
+                        <div class="cajasMetodoPago"></div>
+                        <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
                         <!-- cajas metodo pago ↑↑↑-->
                     </div>
                     <br>
