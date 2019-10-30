@@ -90,6 +90,8 @@
                     <div class="form-group row nuevoProducto">
 
                     </div> 
+
+                    <input type="hidden"  id="listaProductos" name="listaProductos">
                     <!-- BOTON PARA AGREGAR PRODUCTO--  -->
                     <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar Producto</button>
                     <hr>
