@@ -50,7 +50,7 @@
                               echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="000001" readonly>';
                             } else {
                               # code...
-                              foreach ($variable as $key => $value) {
+                              foreach ($ventas as $key => $value) {
                                 # code...
                               }
                               $codigo = $value["codigo"]+1;
@@ -119,7 +119,7 @@
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
                                   <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="0.00" readonly required>
-                                  
+                                  <input type="hidden" name="totalVenta" id="totalVenta">
                                 </div>
                               </td>
                             </tr>
@@ -162,7 +162,11 @@
               <div class="box-footer">
                 <button type="submit" class="btn btn-success pull-right">Guardar Venta</button>
               </div><!--cierro box footer-->
-            </form>            
+            </form>   
+                <?php
+                  $guardarVenta = new ControladorVentas();
+                  $guardarVenta -> ctrCrearVenta();
+                ?>
           </div>
         </div> 
           <!-- FORMULARIO DE VENTA ↑↑↑ -->

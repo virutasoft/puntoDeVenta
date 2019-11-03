@@ -1,0 +1,23 @@
+CORREGIR, QUEDA MUY PENDIENTE EL DE AGREGAR EL PRECIO FINAL SUMADO A LA SECCIÓN DE MOVILES
+
+<div class="col-xs-6" style="padding-left:0px">
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" placeholder="Código transacción" required>
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                          </div>
+                        </div>
+
+
+---------
+
+falta colocar el idProducto="'+idProducto+'"  en nuevaDesripcionProducto en dispositivos moviles
+
+falta: quitar la clase agregarProducto del input agregarProducto cuando agregamos elementos desde la tabla
+
+falta: cambiar automáticamente el cambio en efectivo al modificar el iva y las cantidades
+
+falta poner en compras el valor en dinero que el cliente ha comprado, no solo los item
+
+falta corregir lo del numero de la venta incremental, codigo
+
+falta: que se actualice la tabla en productos cuando se envia la venta desde el disp. movil

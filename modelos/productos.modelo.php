@@ -93,4 +93,22 @@ class ModeloProductos{
         
     }// fin mdlEliminarProducto
     //ELIMINAR PRODUCTOS ↑↑↑
+
+    // ACTUALIZAR PRODUCTOS LUEGO DE LA VENTA ↓↓↓
+    static public function mdlActualizarProducto($tabla, $item1, $valor1, $valor){
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 =:$item1 WHERE id=:id");
+        $stmt-> bindParam(":".$item1,$valor1, PDO::PARAM_STR);
+        $stmt->bindParam(":id",$valor, PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            # code...
+            return "ok";
+        } else {
+            # code...
+            return "error";
+        }
+        $stmt->close();
+        $stmt=null;
+        
+    }// fin mdl actualizar productos
+    // ACTUALIZAR PRODUCTOS LUEGO DE LA VENTA ↑↑↑
 }//FIN CLASS MODELOPRODUCTOS
